@@ -20,7 +20,7 @@ if (isset($_POST['submit'])) {
 	    mapTypeId:google.maps.MapTypeId.ROADMAP
 	  };
 	  
-	  var peta = new google.maps.Map(document.getElementById("googleMap"), propertiPeta);
+	  var peta = new google.maps.Map(document.getElementById("map-box"), propertiPeta);
 	  
 	  // membuat Marker
 	  var marker=new google.maps.Marker({
