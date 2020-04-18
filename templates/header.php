@@ -8,6 +8,7 @@
 	<script src="assets/js/bootstrap.min.js"></script>
 	<script src="assets/js/bootstrap.js"></script>
 	<script src="assets/js/bootstrap.min.js.map"></script>
+	<script src="http://maps.googleapis.com/maps/api/js"></script>
 	<title>Rental Mobil Mantap</title>
 </head>
 <body>

@@ -12,11 +12,31 @@ if (isset($_POST['submit'])) {
 
 
 ?>
+<script>
+	function initialize() {
+	  var propertiPeta = {
+	    center:new google.maps.LatLng(-8.5830695,116.3202515),
+	    zoom:9,
+	    mapTypeId:google.maps.MapTypeId.ROADMAP
+	  };
+	  
+	  var peta = new google.maps.Map(document.getElementById("googleMap"), propertiPeta);
+	  
+	  // membuat Marker
+	  var marker=new google.maps.Marker({
+	      position: new google.maps.LatLng(-8.5830695,116.3202515),
+	      map: peta
+	  });
 
+	}
+
+	// event jendela di-load  
+	google.maps.event.addDomListener(window, 'load', initialize);
+</script>
 <br><br>
 <div class="container">
 	<div class="row">
-		<div class="col-6">
+		<div class="col-md-6">
 			<form method="post" action="">
 			<div class="form-group">
 				<label><b>Titik Penjemputan : </b></label>
@@ -59,6 +79,9 @@ if (isset($_POST['submit'])) {
 				<button class="btn btn-outline-success rounded-pill form-control" type="submit"
 				name="submit">Pesan Sekarang</button>
 			</div>
+		</div>
+		<div class="col-md-6">
+			<div id="map-box"></div>
 		</div>
 	</div>
 </div>
