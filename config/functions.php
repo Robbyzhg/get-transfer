@@ -6,7 +6,7 @@ class functions {
 	public function __construct()
 	{
 		$this->conn = mysqli_connect("localhost","root","","db_rentalmobil");
-		$this->baseurl = "http://localhost/rental-mobil/";
+		$this->baseurl = "http://localhost/get-transfer/";
 	}
 
 	public function get_data($query)
@@ -85,9 +85,9 @@ class functions {
 				return 3;
 			} else {
 				return $this->get_data($query);
+			}
 		}
 	}
-}
 
 	public function pesan_delete($id_pesan)
 	{
@@ -99,6 +99,23 @@ class functions {
 			$this->notif("Gagal! Kesalahan pada query","danger");
 			$this->redirect($this->baseurl . "admin/cek_pesanan.php");
 		}
+	}
+
+	public function get_distance($origins,$destinations)
+	{
+		$get = file_get_contents("https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&key=AIzaSyC-52V-kcWKfmd9Bd29vqMZ1HM1ccAZjg4&origins=". $origins ."&destinations=". $destinations);
+		$data = json_decode($get);
+		$result = [
+			"distance" => $data->rows[0]->elements[0]->distance->text,
+			"duration" => $data->rows[0]->elements[0]->duration->text,
+			"price" => [
+				"economy" => 10000 * floor($data->rows[0]->elements[0]->distance->text),
+				"business" => 20000 * floor($data->rows[0]->elements[0]->distance->text),
+				"exclusive" => 30000 * floor($data->rows[0]->elements[0]->distance->text)
+			]
+		];
+
+		return $result;
 	}
 
 }
