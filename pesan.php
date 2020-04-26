@@ -12,6 +12,7 @@ if (isset($_POST['submit'])) {
 	die;
 } elseif ( isset($_POST['order']) ) {
 	echo $myfunc->order_now($_POST);
+	die;
 }
 
 include 'templates/header.php';
@@ -21,6 +22,13 @@ include 'templates/header.php';
 <div class="container mb-5">
 	<div class="row">
 		<div class="col-md-6">
+			<?php if ( isset($_SESSION["flash_data"]) ): ?>
+				<div class="alert alert-<?= $_SESSION["flash_data"]['status'] ?>" role="alert">
+					<?= $_SESSION["flash_data"]['message'] ?>
+				</div>
+				<?php unset($_SESSION["flash_data"]) ?>
+			<?php endif ?>
+
 			<button class="btn btn-success rounded-pill mb-3" id="btnAddDestination">Tambah Titik Tujuan</button>
 			
 			<div id="destinationsarea">
@@ -190,11 +198,11 @@ include 'templates/header.php';
 			email = $("#txtemail").val();
 		$.ajax({
 			url : "<?= $myfunc->baseurl ?>pesan.php",
-			data : { note : catatan, no_telp : nohp, email : email, destination : selectedDestinations, order:true },
+			data : { note : catatan, no_telp : nohp, email : email, destinations : selectedDestinations, order:true },
 			type : "post",
 			dataType : "text",
 			success: function(result) {
-
+				window.location = "<?= $myfunc->baseurl ?>pesan.php";
 			}
 		});
 	});

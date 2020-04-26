@@ -1,12 +1,28 @@
 <?php 
+session_start();
+
 class functions {
 	public $conn;
 	public $baseurl;
 
 	public function __construct()
 	{
-		$this->conn = mysqli_connect("localhost","root","","db_rentalmobil");
+		$this->conn = mysqli_connect("localhost","dimas","dimas","db_rentalmobil");
 		$this->baseurl = "http://localhost/get-transfer/";
+	}
+
+	public function get_last_id($table,$column)
+	{
+		$query = mysqli_query($this->conn, "SELECT * FROM $table ORDER BY $column DESC");
+		$fetch = mysqli_fetch_assoc($query);
+		$numrow = mysqli_num_rows($query);
+
+		if ( $numrow > 0 ) {
+			return $fetch[$column];
+		} else {
+			return 0;
+		}
+
 	}
 
 	public function get_data($query)
@@ -150,5 +166,33 @@ class functions {
 		];
 
 		return $data[$destination];
+	}
+
+	public function order_now($data)
+	{
+		$id_pesan = $this->get_last_id("pesan","id_pesan") + 1;
+		$note = $data['note'];
+		$no_telp = $data['no_telp'];
+		$email = $data['email'];
+		$destinations = $data['destinations'];
+
+		$insert = $this->exe("INSERT INTO pesan VALUES ('$id_pesan','$note','$no_telp','$email')");
+		if ( $insert > 0 ) {
+			$this->notif("PESANAN BERHASIL!","success");
+		} else {
+			$this->notif("PESANAN GAGAL!","danger");
+			return "0";
+		}
+
+
+		foreach ($destinations as $destination) {
+			$id_detail = $this->get_last_id("pesandetail","id_detail") + 1;
+			$antar = $destination['destination'];
+			$waktu = $destination['date'] . " " . $destination['time'];
+			$price = $destination['cost'];
+			$this->exe("INSERT INTO pesandetail VALUES ('$id_detail','$id_pesan','$antar','$waktu','$price')");
+		}
+
+		return "1";
 	}
 }
