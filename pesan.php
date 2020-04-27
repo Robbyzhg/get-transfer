@@ -13,6 +13,9 @@ if (isset($_POST['submit'])) {
 } elseif ( isset($_POST['order']) ) {
 	echo $myfunc->order_now($_POST);
 	die;
+} elseif ( isset($_POST['get_destination_coordinate']) ) {
+	echo $myfunc->get_destination_coordinate($_POST['destination']);
+	die;
 }
 
 include 'templates/header.php';
@@ -99,47 +102,36 @@ include 'templates/header.php';
 
 <script>
 	var selectedDestinations = [];
+	var selectedCoordinate = [];
 	var countdestination = 0;
-	var peta;
-
 
 	function showdestinations()
 	{
 		var loc = $("#destinationsarea");
 		loc.html("");
 		$.each(selectedDestinations, function(index){
-			loc.append("<div class='card mb-3'> <div class='card-body'> <h4><button class='btn btn-danger btn-sm' id='btnCancelDestination' data-id='"+ index +"'>X</button> Tujuan # "+ (index + 1) +"</h4> <div class='row'> <div class='col-md-2 col-5'>Tujuan</div> <div class='col-md-10 col-7'>: "+ selectedDestinations[index].destination +"</div> </div> <div class='row'> <div class='col-md-2 col-5'>Tanggal</div> <div class='col-md-10 col-7'>: "+ selectedDestinations[index].date +"</div> </div> <div class='row'> <div class='col-md-2 col-5'>Waktu</div> <div class='col-md-10 col-7'>: "+ selectedDestinations[index].time +"</div> </div> <h4>"+ selectedDestinations[index].cost +"</h4> </div> </div>")
+			loc.append("<div class='card mb-3'> <div class='card-body'> <h4><button class='btn btn-danger btn-sm' id='btnCancelDestination' data-id='"+ index +"'>X</button> Tujuan # "+ (index + 1) +"</h4> <div class='row'> <div class='col-md-4 col-5'>Tujuan</div> <div class='col-md-8 col-7'>: "+ selectedDestinations[index].destination +"</div> </div> <div class='row'> <div class='col-md-4 col-5'>Tanggal</div> <div class='col-md-8 col-7'>: "+ selectedDestinations[index].date +"</div> </div> <div class='row'> <div class='col-md-4 col-5'>Waktu</div> <div class='col-md-8 col-7'>: "+ selectedDestinations[index].time +"</div> </div> <h4>"+ selectedDestinations[index].cost +"</h4> </div> </div>")
 		});
 	}
 
+	var peta;
 	function mapInitialize() 
 	{
 		var propertiPeta = {
-			center:new google.maps.LatLng(-8.7453498,115.1632132),
-			zoom:15,
+			center:new google.maps.LatLng(-8.4102025,115.0926971),
+			zoom:9,
 			mapTypeId:google.maps.MapTypeId.ROADMAP
 		};
 
 		peta = new google.maps.Map(document.getElementById("map-box"), propertiPeta);
-
-		var marker=new google.maps.Marker({
-			position: new google.maps.LatLng(-8.7453498,115.1632132),
-			map: peta,
-			icon: "assets/img/titikjemput.png"
-		});
-
 	}
 
 	function markOnMap(coordinate)
 	{
-		var markerantar=new google.maps.Marker({
-			position: new google.maps.LatLng(coordinate),
-			map: peta,
-			icon: "assets/img/titikantar.png"
-		});
-
-		var markerjemput=new google.maps.Marker({
-			position: new google.maps.LatLng(-8.7453498,115.1632132),
+		console.log(coordinate);
+		coordinate = coordinate.split(",");
+		var marker=new google.maps.Marker({
+			position: new google.maps.LatLng(coordinate[0],coordinate[1]),
 			map: peta,
 			icon: "assets/img/titikjemput.png"
 		});
@@ -174,8 +166,18 @@ include 'templates/header.php';
 						cost: result
 					}
 					selectedDestinations.push(data);
-					showdestinations();
-					countdestination += 1;
+
+					$.ajax({
+						url: "<?= $myfunc->baseurl ?>pesan.php",
+						data : { destination : destination, get_destination_coordinate : true },
+						type : "post",
+						dataType : "text",
+						success : function(result) {
+							markOnMap(result);
+							showdestinations();
+							countdestination += 1;
+						}
+					});
 				}
 			});
 		}

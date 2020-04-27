@@ -168,6 +168,35 @@ class functions {
 		return $data[$destination];
 	}
 
+	public function get_destination_coordinate($destination)
+	{
+		$data = [
+			"Kuta" => "-8.7263223,115.1365133",
+			"Legian" => "-8.7043754,115.1629892",
+			"Seminyak" => "-8.6899114,115.1566542",
+			"Kerobokan" => "-8.6522444,115.1541187",
+			"Jimbaran" => "-8.790609,115.14525",
+			"Nusa Dua" => "-8.8190521,115.2155797",
+			"Uluwatu" => "-8.8235708,115.0790143",
+			"Canggu" => "-8.6425819,115.1269695",
+			"Tanahlot" => "-8.6212118,115.0846145",
+			"Ubud" => "-8.4961096,115.2310197",
+			"Tegalalang" => "-8.4441428,115.2707482",
+			"Kintamani" => "-8.2499984,115.274953",
+			"Candidasa" => "-8.5013214,115.5443327",
+			"Amed" => "-8.335439,115.6422827",
+			"Lovina" => "-8.1609538,115.0209923",
+			"Pemuteran" => "-8.170573,114.6140583",
+			"Gilimanuk" => "-8.1971895,114.4264948",
+			"Tabanan" => "-8.4392037,114.9259631",
+			"Negara" => "-8.3145408,114.5189401",
+			"DPS" => "-8.7173875,115.1448732",
+			"Sanur" => "-8.6958047,115.2420168"
+		];
+
+		return $data[$destination];
+	}
+
 	public function order_now($data)
 	{
 		$id_pesan = $this->get_last_id("pesan","id_pesan") + 1;
