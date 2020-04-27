@@ -158,6 +158,14 @@ include 'templates/header.php';
 		if ( destination == 0 ) {
 			alert("Pilih Tujuan Terlebih Dahulu!");
 		} else {
+			if ( selectedDestinations.length > 0 ) {
+				var previousDestination = selectedDestinations[countdestination - 1].destination;
+				if ( previousDestination == destination ) {
+					alert("Pilih tujuan yang berbeda!");
+					return;
+				}
+			}
+
 			$.ajax({
 				url: "<?= $myfunc->baseurl ?>pesan.php",
 				data : { destination : destination, get_destination_cost : true },
