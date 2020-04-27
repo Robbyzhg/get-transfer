@@ -124,17 +124,22 @@ include 'templates/header.php';
 		};
 
 		peta = new google.maps.Map(document.getElementById("map-box"), propertiPeta);
+
+		if ( selectedCoordinate.length > 0 ) {
+			$.each(selectedCoordinate, function(index){
+				var coordinate = selectedCoordinate[index].split(",");
+				new google.maps.Marker({
+					position: new google.maps.LatLng(coordinate[0],coordinate[1]),
+					map: peta,
+					icon: "assets/img/titikjemput.png"
+				});
+			});
+		}
 	}
 
 	function markOnMap(coordinate)
 	{
-		console.log(coordinate);
-		coordinate = coordinate.split(",");
-		var marker=new google.maps.Marker({
-			position: new google.maps.LatLng(coordinate[0],coordinate[1]),
-			map: peta,
-			icon: "assets/img/titikjemput.png"
-		});
+		selectedCoordinate.push(coordinate);
 	}
 	mapInitialize()
 
@@ -176,6 +181,7 @@ include 'templates/header.php';
 							markOnMap(result);
 							showdestinations();
 							countdestination += 1;
+							mapInitialize();
 						}
 					});
 				}
@@ -189,7 +195,9 @@ include 'templates/header.php';
 	$("#destinationsarea").on("click","#btnCancelDestination",function(){
 		var index = $(this).attr("data-id");
 		selectedDestinations.splice(index,1);
+		selectedCoordinate.splice(index,1);
 		showdestinations();
+		mapInitialize();
 		countdestination -= 1;
 	});
 
