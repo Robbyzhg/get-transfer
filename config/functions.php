@@ -1,5 +1,6 @@
 <?php 
 session_start();
+require('PHPMailer/src/PHPMailer.php');
 
 class functions {
 	public $conn;
@@ -7,7 +8,7 @@ class functions {
 
 	public function __construct()
 	{
-		$this->conn = mysqli_connect("localhost","root","","db_rentalmobil");
+		$this->conn = mysqli_connect("localhost","dimas","dimas","db_rentalmobil");
 		$this->baseurl = "http://localhost/get-transfer/";
 	}
 
