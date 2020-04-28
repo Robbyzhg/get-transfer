@@ -4,4 +4,5 @@ include 'config/functions.php';
 
 $myfunc = new functions();
 
-echo $myfunc->get_last_id("pesan","id_pesan");
+// $myfunc->send_mail("d9firmansyah@gmail.com");
+echo "asd";

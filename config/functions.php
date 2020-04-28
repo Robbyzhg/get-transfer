@@ -1,10 +1,10 @@
 <?php 
 session_start();
-require('PHPMailer/src/PHPMailer.php');
 
 class functions {
 	public $conn;
 	public $baseurl;
+	public $mail;
 
 	public function __construct()
 	{
@@ -227,21 +227,27 @@ class functions {
 	}
 
 	public function pesandetail_get($id_pesan = null)
-		{
-			if ($id_pesan == null) {
-				$query = "SELECT * FROM pesandetail";
-				if ( $this->num_rows($query) < 1 ) {
-					return 3;
-				} else {
-					return $this->query($query);
-				}
+	{
+		if ($id_pesan == null) {
+			$query = "SELECT * FROM pesandetail";
+			if ( $this->num_rows($query) < 1 ) {
+				return 3;
 			} else {
-				$query = "SELECT * FROM pesandetail WHERE id_pesan = '$id_pesan'";
-				if ( $this->num_rows($query) < 1 ) {
-					return 3;
-				} else {
-					return $this->get_data($query);
-				}
+				return $this->query($query);
+			}
+		} else {
+			$query = "SELECT * FROM pesandetail WHERE id_pesan = '$id_pesan'";
+			if ( $this->num_rows($query) < 1 ) {
+				return 3;
+			} else {
+				return $this->get_data($query);
 			}
 		}
-	}	
+	}
+
+	public function send_mail($email)
+	{
+		echo "ok"; die;
+		
+	}
+}	
