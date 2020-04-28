@@ -23,11 +23,6 @@ if (isset($_GET['selesai'])) {
 				<table class="table">
 					<thead class="bg-success text-white">
 						<tr>
-							<td>Titik Jemput</td>
-							<td>Titik Antar</td>
-							<td>Tanggal Jemput</td>
-							<td>Waktu Jemput</td>
-							<td>Kelas Mobil</td>
 							<td>Catatan</td>
 							<td>No Telpon</td>
 							<td>Email</td>
@@ -37,16 +32,11 @@ if (isset($_GET['selesai'])) {
 					<tbody>
 						<?php foreach ($get as $row): ?>
 							 <tr>
-							 	<td><?= $row['titik_jemput']; ?></td>
-							 	<td><?= $row['titik_antar']; ?></td>
-							 	<td><?= $row['tgl_penjemputan']; ?></td>
-							 	<td><?= $row['waktu_penjemputan']; ?></td>
-							 	<td><?= $row['kelas_mobil']; ?></td>
 							 	<td><?= $row['note']; ?></td>
 							 	<td><?= $row['no_telp']; ?></td>
 							 	<td><?= $row['email']; ?></td>
 							 	<td>
-							 		<a href="<?= $myfunc->baseurl ?>payment_edit.php?id=<?= $row['id_pesan'] ?>" class="btn btn-primary">Terima</a>
+							 		<a href="<?= $myfunc->baseurl ?>admin/payment_edit.php?id=<?= $row['id_pesan'] ?>" class="btn btn-primary">Terima</a>
 							 		<a href="<?= $myfunc->baseurl ?>admin/cek_pesanan.php?selesai=<?= $row['id_pesan'] ?>" class="btn btn-danger" onclick="return confirm('yakin ?')">Selesai</a>
 							 	</td>
 							 </tr>

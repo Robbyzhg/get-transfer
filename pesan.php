@@ -220,7 +220,7 @@ include 'templates/header.php';
 			type : "post",
 			dataType : "text",
 			success: function(result) {
-				window.location = "<?= $myfunc->baseurl ?>pesan.php";
+				window.location = "<?= $myfunc->baseurl ?>wait.php";
 			}
 		});
 	});

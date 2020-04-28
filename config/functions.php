@@ -7,7 +7,7 @@ class functions {
 
 	public function __construct()
 	{
-		$this->conn = mysqli_connect("localhost","dimas","dimas","db_rentalmobil");
+		$this->conn = mysqli_connect("localhost","root","","db_rentalmobil");
 		$this->baseurl = "http://localhost/get-transfer/";
 	}
 
@@ -224,4 +224,23 @@ class functions {
 
 		return "1";
 	}
-}
+
+	public function pesandetail_get($id_pesan = null)
+		{
+			if ($id_pesan == null) {
+				$query = "SELECT * FROM pesandetail";
+				if ( $this->num_rows($query) < 1 ) {
+					return 3;
+				} else {
+					return $this->query($query);
+				}
+			} else {
+				$query = "SELECT * FROM pesandetail WHERE id_pesan = '$id_pesan'";
+				if ( $this->num_rows($query) < 1 ) {
+					return 3;
+				} else {
+					return $this->get_data($query);
+				}
+			}
+		}
+	}	
