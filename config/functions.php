@@ -1,6 +1,6 @@
 <?php 
 session_start();
-
+require('PHPMailer/class.phpmailer.php');
 class functions {
 	public $conn;
 	public $baseurl;
@@ -8,6 +8,7 @@ class functions {
 
 	public function __construct()
 	{
+		$this->mail = new PHPMailer();
 		$this->conn = mysqli_connect("localhost","dimas","dimas","db_rentalmobil");
 		$this->baseurl = "http://localhost/get-transfer/";
 	}
@@ -247,7 +248,29 @@ class functions {
 
 	public function send_mail($email)
 	{
-		echo "ok"; die;
+		$this->mail->SMTPDebug = 0;
+		$this->mail->isSMTP();                                      
+		$this->mail->Host = 'smtp.gmail.com';  
+		$this->mail->Mailer   = "smtp";
+		$this->mail->SMTPAuth = true;                               
+		$this->mail->Username = 'gettrans.rgb@gmail.com';              
+		$this->mail->Password = 'gettrans123';                         
+		$this->mail->SMTPSecure = 'tls';                            
+		$this->mail->Port = 587;                                    
+
+		$this->mail->setFrom('receipt@gettransfer.com', 'Get Transfer');
+		$this->mail->addAddress('d9firmansyah@gmail.com', 'd9firmansyah@gmail.com');
+		$this->mail->isHTML(true);
+
+		$this->mail->Subject = 'Here is the subject';
+		$this->mail->Body    = 'This is the HTML message body <b>in bold!</b>';
+
+		if(!$this->mail->send()) {
+		    echo 'Message could not be sent.';
+		    echo 'Mailer Error: ' . $this->mail->ErrorInfo;
+		} else {
+		    echo 'Message has been sent';
+		}
 		
 	}
 }	
