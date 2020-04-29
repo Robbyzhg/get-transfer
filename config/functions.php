@@ -578,7 +578,7 @@ class functions {
 		$this->mail->addAddress($email, $email);
 		$this->mail->isHTML(true);
 
-		$this->mail->Subject = 'Here is the subject';
+		$this->mail->Subject = 'Your receipt';
 		$this->mail->Body    = $content;
 
 		if(!$this->mail->send()) {
