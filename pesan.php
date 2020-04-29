@@ -214,14 +214,18 @@ include 'templates/header.php';
 		var catatan = $("#txtcatatan").val(),
 			nohp = $("#txtnohp").val(),
 			email = $("#txtemail").val();
-		$.ajax({
-			url : "<?= $myfunc->baseurl ?>pesan.php",
-			data : { note : catatan, no_telp : nohp, email : email, destinations : selectedDestinations, order:true },
-			type : "post",
-			dataType : "text",
-			success: function(result) {
-				window.location = "<?= $myfunc->baseurl ?>wait.php";
-			}
-		});
+		if ( countdestination == 0 ) {
+			alert("Pilih tujuan terlebih dahulu!");
+		} else {
+			$.ajax({
+				url : "<?= $myfunc->baseurl ?>pesan.php",
+				data : { note : catatan, no_telp : nohp, email : email, destinations : selectedDestinations, order:true },
+				type : "post",
+				dataType : "text",
+				success: function(result) {
+					window.location = "<?= $myfunc->baseurl ?>wait.php";
+				}
+			});
+		}
 	});
 </script>
