@@ -107,13 +107,14 @@
 <body>
 <div id="formWrapper">
 
+<form action="cek_login.php" method="post">
 <div id="form">
 <div class="logo">
     <img style="width: 100px; height: 100px;" src="assets/img/gettransok.png">
 </div>
         <div class="form-item">
-            <p class="formLabel">Email</p>
-            <input type="email" name="email" id="email" class="form-style" autocomplete="off"/>
+            <p class="formLabel">Username</p>
+            <input type="text" name="username" id="username" class="form-style" autocomplete="off"/>
         </div>
         <div class="form-item">
             <p class="formLabel">Password</p>
@@ -127,10 +128,11 @@
         </div>
 </div>
 </div>
+</form>
 
 <script>
     $(document).ready(function(){
-        var formInputs = $('input[type="email"],input[type="password"]');
+        var formInputs = $('input[type="text"],input[type="password"]');
         formInputs.focus(function() {
            $(this).parent().children('p.formLabel').addClass('formTop');
            $('div#formWrapper').addClass('darken-bg');
