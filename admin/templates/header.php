@@ -34,5 +34,10 @@ $myfunc = new functions();
 	        <a class="nav-link" href="<?= $myfunc->baseurl ?>admin/cek_pesanan.php">Cek Pesanan</a>
 	      </li>
 	    </ul>
+	    <ul class="navbar-nav ml-auto">
+	    	<li class="nav-item active">
+	    		<a class="nav-link" href="../logout.php">Logout</a>
+	    	</li>
+	    </ul>
 	  </div>
 	</nav>
