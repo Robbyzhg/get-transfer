@@ -66,28 +66,6 @@ class functions {
 		header("Location: $link");
 	}
 
-	public function pesan_add($data)
-	{
-		$titikjemput = $data['titikjemput'];
-		$titikantar = $data['titikantar'];
-		$tglpenjemputan = $data['tglpenjemputan'];
-		$waktupenjemputan = $data['waktupenjemputan'];
-		$kelasmobil = $data['kelasmobil'];
-		$note = $data['note'];
-		$notelp = $data['notelp'];
-		$email = $data['email'];
-
-		$insert = $this->exe("INSERT INTO pesan VALUES ('', '$titikjemput', '$titikantar', '$tglpenjemputan',
-			'$waktupenjemputan', '$kelasmobil', '$note', '$notelp', '$email')");
-		if ( $insert > 0 ) {
-				$this->notif("PESANAN BERHASIL!","success");
-				$this->redirect($this->baseurl . "wait.php");
-			} else {
-				$this->notif("PESANAN GAGAL!","danger");
-				$this->redirect($this->baseurl . "pesan.php");
-		}
-	}
-
 	public function pesan_get($id_pesan = null)
 	{
 		if ($id_pesan == null) {
@@ -117,23 +95,6 @@ class functions {
 			$this->notif("Gagal! Kesalahan pada query","danger");
 			$this->redirect($this->baseurl . "admin/cek_pesanan.php");
 		}
-	}
-
-	public function get_distance($origins,$destinations)
-	{
-		$get = file_get_contents("https://maps.googleapis.com/maps/api/distancematrix/json?units=metric&key=AIzaSyC-52V-kcWKfmd9Bd29vqMZ1HM1ccAZjg4&origins=". $origins ."&destinations=". $destinations);
-		$data = json_decode($get);
-		$result = [
-			"distance" => $data->rows[0]->elements[0]->distance->text,
-			"duration" => $data->rows[0]->elements[0]->duration->text,
-			"price" => [
-				"economy" => 10000 * floor($data->rows[0]->elements[0]->distance->text),
-				"business" => 20000 * floor($data->rows[0]->elements[0]->distance->text),
-				"exclusive" => 30000 * floor($data->rows[0]->elements[0]->distance->text)
-			]
-		];
-
-		return $result;
 	}
 
 	public function get_destinations()
@@ -209,9 +170,9 @@ class functions {
 
 		$insert = $this->exe("INSERT INTO pesan VALUES ('$id_pesan','$note','$no_telp','$email')");
 		if ( $insert > 0 ) {
-			$this->notif("PESANAN BERHASIL!","success");
+			$this->notif("SUCCESS ORDER!","success");
 		} else {
-			$this->notif("PESANAN GAGAL!","danger");
+			$this->notif("FAIL TO ORDER!","danger");
 			return "0";
 		}
 
@@ -261,7 +222,7 @@ class functions {
 		$insert = $this->exe("INSERT INTO mobil(merk,jenis,plat,gambar) VALUES ('$merk','$jenis','$plat', '$gambar')");
 
 		if ( $insert > 0 ) {
-			$this->notif("INPUT BERHASIL!","success");
+			$this->notif("SUCCESS TO INPUT!","success");
 			$this->redirect("input_mobil.php");
 		} else {
 			$this->notif(mysqli_error($this->conn),"danger");
@@ -282,9 +243,9 @@ class functions {
 			$insert = $this->exe("INSERT INTO users(username,password,level) VALUES ('$username','$password','user')");
 
 			if ( $insert > 0 ) {
-				$this->notif("REGISTER BERHASIL!","success");
+				$this->notif("REGISTRATION SUCCESSFULLY!","success");
 			} else {
-				$this->notif("REGISTER GAGAL!","danger");
+				$this->notif("REGISTRATION FAILED!","danger");
 			}
 		}
 
