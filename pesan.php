@@ -1,19 +1,11 @@
 <?php
+
 include 'templates/header.php';
 
 $destinations = $myfunc->get_destinations();
 
 if (isset($_POST['submit'])) {
 	$myfunc->pesan_add($_POST);
-} elseif ( isset($_POST['get_destination_cost']) ) {
-	echo $myfunc->get_destination_cost($_POST['destination']);
-	die;
-} elseif ( isset($_POST['order']) ) {
-	echo $myfunc->order_now($_POST);
-	die;
-} elseif ( isset($_POST['get_destination_coordinate']) ) {
-	echo $myfunc->get_destination_coordinate($_POST['destination']);
-	die;
 }
 
 
@@ -27,25 +19,37 @@ if ($_SESSION['level']=="") {
 <div class="container mb-5">
 	<div class="row">
 		<div class="col-md-6">
-			<?php if ( isset($_SESSION["flash_data"]) ): ?>
-				<div class="alert alert-<?= $_SESSION["flash_data"]['status'] ?>" role="alert">
-					<?= $_SESSION["flash_data"]['message'] ?>
-				</div>
-				<?php unset($_SESSION["flash_data"]) ?>
-			<?php endif ?>
 
-			<button class="btn btn-success rounded-pill mb-3" id="btnAddDestination">Tambah Titik Tujuan</button>
+			<button class="btn btn-success rounded-pill mb-3" id="btnAddDestination">
+				<?php if ( $_SESSION["lang"] == "id" ): ?>
+					Tambah Titik Tujuan
+				<?php else: ?>
+					Add more Destinations
+				<?php endif ?>
+			</button>
 			
 			<div id="destinationsarea">
 			</div>
 			
 			<form method="post" action="" id="frmorder">
 				<div class="form-group">
-					<label><b>Catatan untuk Driver : </b></label>
+					<label><b>
+						<?php if ( $_SESSION["lang"] == "id" ): ?>
+							Catatan untuk Driver : 
+						<?php else: ?>
+							Notes for Driver :
+						<?php endif ?>
+					</b></label>
 					<input class="form-control" required type="text" name="note" id="txtcatatan">
 				</div>
 				<div class="form-group">
-					<label><b>No Telpon : </b></label>
+					<label><b>
+						<?php if ( $_SESSION["lang"] == "id" ): ?>
+							No Telpon : 
+						<?php else: ?>
+							Phone Number :
+						<?php endif ?>
+					</b></label>
 					<input class="form-control" required type="text" name="notelp" id="txtnohp">
 				</div>
 				<div class="form-group">
@@ -54,7 +58,13 @@ if ($_SESSION['level']=="") {
 				</div>
 				<div class="form-group">
 					<button class="btn btn-outline-success rounded-pill form-control" type="submit"
-					name="submit">Pesan Sekarang</button>
+					name="submit">
+						<?php if ( $_SESSION["lang"] == "id" ): ?>
+							Pesan Sekarang
+						<?php else: ?>
+							Order Now
+						<?php endif ?>
+					</button>
 				</div>
 			</form>
 		</div>
@@ -68,7 +78,13 @@ if ($_SESSION['level']=="") {
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Tambah Titik Tujuan</h5>
+        <h5 class="modal-title" id="exampleModalLabel">
+        	<?php if ( $_SESSION["lang"] == "id" ): ?>
+	        	Tambah Titik Tujuan
+			<?php else: ?>
+				Add new Destinations
+			<?php endif ?>
+        </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -76,26 +92,62 @@ if ($_SESSION['level']=="") {
       <div class="modal-body">
         <form id="frmAddDestination">
         	<div class="form-group">
-		        <label>Titik Tujuan</label>
+		        <label>
+		        	<?php if ( $_SESSION["lang"] == "id" ): ?>
+			        	Titik Tujuan
+					<?php else: ?>
+						Destination
+					<?php endif ?>
+		        </label>
 		        <select class="form-control" name="destination" id="cmbdestination">
-		        	<option value="0">--- Pilih Satu ---</option>
+		        	<option value="0">
+		        		<?php if ( $_SESSION["lang"] == "id" ): ?>
+			        		--- Pilih Satu ---
+						<?php else: ?>
+							--- Choose One ---
+						<?php endif ?>
+		        	</option>
 		        	<?php foreach ($destinations as $destination): ?>
 		        		<option value="<?= $destination ?>"><?= $destination ?></option>
 		        	<?php endforeach ?>
 		        </select>
         	</div>
         	<div class="form-group">
-        		<label>Tanggal Berangkat</label>
+        		<label>
+        			<?php if ( $_SESSION["lang"] == "id" ): ?>
+	        			Tanggal Berangkat
+					<?php else: ?>
+						Date of Departure
+					<?php endif ?>
+        		</label>
         		<input class="form-control" required type="date" name="tglberangkat" id="txtdate">
         	</div>
         	<div class="form-group">
-        		<label>Waktu Berangkat</label>
+        		<label>
+        			<?php if ( $_SESSION["lang"] == "id" ): ?>
+	        			Waktu Berangkat
+					<?php else: ?>
+						Time of Departure
+					<?php endif ?>
+        		</label>
         		<input class="form-control" required type="time" name="waktuberangkat" id="txttime">
         	</div>
       </div>
       <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Tutup</button>
-	        <button type="submit" class="btn btn-success">Simpan</button>
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">
+	        	<?php if ( $_SESSION["lang"] == "id" ): ?>
+		        	Tutup
+				<?php else: ?>
+					Close
+				<?php endif ?>
+	        </button>
+	        <button type="submit" class="btn btn-success">
+	        	<?php if ( $_SESSION["lang"] == "id" ): ?>
+		        	Simpan
+				<?php else: ?>
+					Save
+				<?php endif ?>
+	        </button>
         </form>
       </div>
     </div>
@@ -169,7 +221,7 @@ if ($_SESSION['level']=="") {
 			}
 
 			$.ajax({
-				url: "<?= $myfunc->baseurl ?>pesan.php",
+				url: "<?= $myfunc->baseurl ?>config/request.php",
 				data : { destination : destination, get_destination_cost : true },
 				type : "post",
 				dataType : "text",
@@ -183,7 +235,7 @@ if ($_SESSION['level']=="") {
 					selectedDestinations.push(data);
 
 					$.ajax({
-						url: "<?= $myfunc->baseurl ?>pesan.php",
+						url: "<?= $myfunc->baseurl ?>config/request.php",
 						data : { destination : destination, get_destination_coordinate : true },
 						type : "post",
 						dataType : "text",
