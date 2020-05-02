@@ -2,21 +2,38 @@
 
 include 'templates/header.php' 
 
-
 ?>
 
 <div class="header">
 	<br><br><br><br><br>
-	<h1>Penjemputan Aman, Nyaman, dan Terpercaya!</h1>
+	<h1>
+		<?php if ( $_SESSION["lang"] == "id" ): ?>
+			Penjemputan Aman, Nyaman, dan Terpercaya!
+		<?php else: ?>
+      		Secure, Comfortable and Reliable Pickup!
+  		<?php endif ?>
+	</h1>
 	<br><br>
-	<a href="pesan.php" class="btn btn-outline-success rounded-pill">Pesan Sekarang</a>
+	<a href="pesan.php" class="btn btn-outline-success rounded-pill">
+		<?php if ( $_SESSION["lang"] == "id" ): ?>
+			Pesan Sekarang
+		<?php else: ?>
+			Order Now
+  		<?php endif ?>
+	</a>
 </div>
 <br><br><br>
 <div class="container">
 	<div class="row">
 		<div class="col-12">
 			<div class="whyus text-center">
-			<h2>KENAPA HARUS PILIH KAMI?</h2>
+			<h2>
+				<?php if ( $_SESSION["lang"] == "id" ): ?>
+					KENAPA HARUS PILIH KAMI?
+				<?php else: ?>
+					WHY SHOULD CHOOSE US ?
+				<?php endif ?>
+			</h2>
 			<hr style="color: green;" size="15px" color="green" width="450px">
 		</div>
 		</div>
@@ -27,20 +44,56 @@ include 'templates/header.php'
 	<div class="row">
 		<div class="col-4">
 			<div style="color: black; border: 0px;" class="card text-center">
-				<h3 class="card-title">HARGA TERJANGKAU!</h3>
-				<p class="card-text">Harga yang Pas di Kantong</p>
+				<h3 class="card-title">
+					<?php if ( $_SESSION["lang"] == "id" ): ?>
+						HARGA TERJANGKAU!
+					<?php else: ?>
+						AFFORDABLE PRICES!
+					<?php endif ?>
+				</h3>
+				<p class="card-text">
+					<?php if ( $_SESSION["lang"] == "id" ): ?>
+						Harga yang Pas di Kantong
+					<?php else: ?>
+						Suitable Price
+					<?php endif ?>
+				</p>
 			</div>
 		</div>
 		<div class="col-4">
 			<div style="color: black; border: 0px;" class="card text-center">
-				<h3 class="card-title">KEAMANAN TERJAMIN!</h3>
-				<p class="card-text">Resmi dan dijaga</p>
+				<h3 class="card-title">
+					<?php if ( $_SESSION["lang"] == "id" ): ?>
+						KEAMANAN TERJAMIN!
+					<?php else: ?>
+						GUARANTEED SECURITY!
+					<?php endif ?>
+				</h3>
+				<p class="card-text">
+					<?php if ( $_SESSION["lang"] == "id" ): ?>
+						Resmi dan dijaga
+					<?php else: ?>
+						Official and Guarded
+					<?php endif ?>
+				</p>
 			</div>
 		</div>
 		<div class="col-4">
 			<div style="color: black; border: 0px;" class="card text-center">
-				<h3 class="card-title">TIDAK ADA BAYARAN LEBIH!</h3>
-				<p class="card-text">Pajak dan Lain-Lain Sudah Termasuk</p>
+				<h3 class="card-title">
+					<?php if ( $_SESSION["lang"] == "id" ): ?>
+						TIDAK ADA BAYARAN LEBIH!
+					<?php else: ?>
+						NO MORE PAYMENT!
+					<?php endif ?>
+				</h3>
+				<p class="card-text">
+					<?php if ( $_SESSION["lang"] == "id" ): ?>
+						Pajak dan Lain-Lain Sudah Termasuk
+					<?php else: ?>
+						Including tax and others
+					<?php endif ?>
+				</p>
 			</div>
 		</div>
 	</div>
