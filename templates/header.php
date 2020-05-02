@@ -5,6 +5,8 @@
 
 	if ( isset($_GET['setlang']) ) {
 		$myfunc->set_lang($_GET['setlang']);
+	} elseif ( !isset($_SESSION["lang"]) ) {
+		$myfunc->set_lang("id");
 	}
 
 ?>
@@ -21,7 +23,7 @@
 	<script src="assets/js/bootstrap.min.js.map"></script>
 	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC-52V-kcWKfmd9Bd29vqMZ1HM1ccAZjg4&v=3.exp&sensor=true&libraries=places"></script>
 	
-	<title>Rental Mobil Mantap</title>
+	<title>Get Transfer</title>
 </head>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-success">
@@ -38,14 +40,30 @@
 	 
 	      <ul class="navbar-nav mr-auto">
 	        <li class="nav-item">
-	          <a class="nav-link" href="index.php">Home</a>
+	          	<a class="nav-link" href="index.php">
+	          		<?php if ( $_SESSION["lang"] == "id" ): ?>
+	          			Beranda
+          			<?php else: ?>
+		          		Home
+	          		<?php endif ?>
+	      		</a>
 	        </li>
 	        <li class="nav-item">
-	          <a class="nav-link" href="catalog.php">Catalog</a>
+	          <a class="nav-link" href="catalog.php">
+	          	<?php if ( $_SESSION["lang"] == "id" ): ?>
+          			Katalog
+      			<?php else: ?>
+		          	Catalog
+          		<?php endif ?>
+	          </a>
 	        </li>
 	        <li class="nav-item dropdown">
 	          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-	            Bahasa
+	            <?php if ( $_SESSION["lang"] == "id" ): ?>
+		            Bahasa
+      			<?php else: ?>
+		          	Languange
+          		<?php endif ?>
 	          </a>
 	          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
 	            <a class="dropdown-item" href="?setlang=en">English</a>
@@ -55,7 +73,13 @@
 	      </ul>
 	      <ul class="navbar-nav">
 	        <li class="nav-item">
-	          <a class="btn btn-danger" href="catalog.php">Pesan Sekarang!</a>
+	          <a class="btn btn-danger" href="catalog.php">
+	          	<?php if ( $_SESSION["lang"] == "id" ): ?>
+		          	Pesan Sekarang!
+      			<?php else: ?>
+		          	Order Now!
+          		<?php endif ?>
+	          </a>
 	        </li>
 	      </ul>
 	      <?php if ( isset($_SESSION["level"]) == "user" ): ?>
