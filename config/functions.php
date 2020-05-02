@@ -310,6 +310,15 @@ class functions {
 		}
 	}
 
+	public function set_lang($lang = "id")
+	{
+		if ( $lang == "en" ) {
+			$_SESSION["lang"] = "en";
+		} else {
+			$_SESSION["lang"] = "id";
+		}
+	}
+
 	public function send_mail($email, $order_details)
 	{
 

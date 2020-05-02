@@ -3,6 +3,9 @@
 
 	$myfunc = new functions();
 
+	if ( isset($_GET['setlang']) ) {
+		$myfunc->set_lang($_GET['setlang']);
+	}
 
 ?>
 <!DOCTYPE html>
@@ -45,8 +48,8 @@
 	            Bahasa
 	          </a>
 	          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-	            <a class="dropdown-item" href="#">English</a>
-	            <a class="dropdown-item" href="#">Indonesia</a>
+	            <a class="dropdown-item" href="?setlang=en">English</a>
+	            <a class="dropdown-item" href="?setlang=id">Indonesia</a>
 	          </div>
 	        </li>
 	      </ul>
