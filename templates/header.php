@@ -34,7 +34,7 @@
 	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 	 
 	      <ul class="navbar-nav mr-auto">
-	        <li class="nav-item active">
+	        <li class="nav-item">
 	          <a class="nav-link" href="index.php">Home</a>
 	        </li>
 	        <li class="nav-item">
@@ -50,10 +50,15 @@
 	          </div>
 	        </li>
 	      </ul>
+	      <ul class="navbar-nav">
+	        <li class="nav-item">
+	          <a class="btn btn-danger" href="catalog.php">Pesan Sekarang!</a>
+	        </li>
+	      </ul>
 	      <?php if ( isset($_SESSION["level"]) == "user" ): ?>
-		      <a href="logout.php" class="btn btn-outline-light">Logout</a>
+		      <a href="logout.php" class="btn btn-outline-light ml-2">Logout</a>
 	      <?php else: ?>
-		      <a href="login.php" class="btn btn-outline-light">Login</a>
+		      <a href="login.php" class="btn btn-outline-light ml-2">Login</a>
 	      <?php endif ?>
 	   </div>
 	</nav>
