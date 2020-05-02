@@ -9,7 +9,7 @@ class functions {
 	public function __construct()
 	{
 		$this->mail = new PHPMailer();
-		$this->conn = mysqli_connect("localhost","dimas","dimas","db_rentalmobil");
+		$this->conn = mysqli_connect("localhost","root","","db_rentalmobil");
 		$this->baseurl = "http://localhost/get-transfer/";
 	}
 

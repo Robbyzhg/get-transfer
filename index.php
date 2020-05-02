@@ -1,8 +1,4 @@
 <?php 
-session_start();
-if ($_SESSION['level']=="") {
-	header("location:login.php?pesan=gagal");
-}
 
 include 'templates/header.php' 
 

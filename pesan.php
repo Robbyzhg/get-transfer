@@ -1,7 +1,5 @@
-<?php 
-include 'config/functions.php';
-
-$myfunc = new functions();
+<?php
+include 'templates/header.php';
 
 $destinations = $myfunc->get_destinations();
 
@@ -18,7 +16,11 @@ if (isset($_POST['submit'])) {
 	die;
 }
 
-include 'templates/header.php';
+
+if ($_SESSION['level']=="") {
+	header("location:login.php?pesan=gagal");
+}
+
 
 ?>
 <br><br>

@@ -1,7 +1,5 @@
 <?php
-include '../config/functions.php';
 
-$myfunc = new functions();
 
 include 'templates/header.php';
 
@@ -37,7 +35,6 @@ if (isset($_GET['selesai'])) {
 							 	<td><?= $row['no_telp']; ?></td>
 							 	<td><?= $row['email']; ?></td>
 							 	<td>
-							 		<a href="<?= $myfunc->baseurl ?>admin/payment_edit.php?id=<?= $row['id_pesan'] ?>" class="btn btn-primary">Terima</a>
 							 		<a href="<?= $myfunc->baseurl ?>admin/cek_pesanan.php?selesai=<?= $row['id_pesan'] ?>" class="btn btn-danger" onclick="return confirm('yakin ?')">Selesai</a>
 							 	</td>
 							 </tr>

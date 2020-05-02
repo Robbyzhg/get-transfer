@@ -1,3 +1,10 @@
+<?php 
+	include 'config/functions.php';
+
+	$myfunc = new functions();
+
+
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -43,6 +50,10 @@
 	          </div>
 	        </li>
 	      </ul>
-	      <a href="logout.php" class="btn btn-outline-light">Logout</a>
+	      <?php if ( isset($_SESSION["level"]) == "user" ): ?>
+		      <a href="logout.php" class="btn btn-outline-light">Logout</a>
+	      <?php else: ?>
+		      <a href="login.php" class="btn btn-outline-light">Login</a>
+	      <?php endif ?>
 	   </div>
 	</nav>
