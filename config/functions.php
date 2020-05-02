@@ -9,7 +9,7 @@ class functions {
 	public function __construct()
 	{
 		$this->mail = new PHPMailer();
-		$this->conn = mysqli_connect("localhost","root","","db_rentalmobil");
+		$this->conn = mysqli_connect("localhost","dimas","dimas","db_rentalmobil");
 		$this->baseurl = "http://localhost/get-transfer/";
 	}
 
@@ -275,15 +275,20 @@ class functions {
 		$username = $data['username'];
 		$password = $data['password'];
 
-		$insert = $this->exe("INSERT INTO users(username,password,level) VALUES ('$username','$password','user')");
-
-		if ( $insert > 0 ) {
-			$this->notif("REGISTER BERHASIL!","success");
+		$query = "SELECT * FROM users WHERE username = '$username'";
+		if ( $this->num_rows($query) > 0 ) {
+			$this->notif("Pick another Username","danger");
 		} else {
-			$this->notif("REGISTER GAGAL!","danger");
-			return "0";
+			$insert = $this->exe("INSERT INTO users(username,password,level) VALUES ('$username','$password','user')");
+
+			if ( $insert > 0 ) {
+				$this->notif("REGISTER BERHASIL!","success");
+			} else {
+				$this->notif("REGISTER GAGAL!","danger");
+			}
 		}
 
+		$this->redirect($this->baseurl . "register.php");	
 	}
 
 	public function mobil_get($id_mobil = null)
@@ -304,7 +309,6 @@ class functions {
 			}
 		}
 	}
-
 
 	public function send_mail($email, $order_details)
 	{

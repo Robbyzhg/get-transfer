@@ -122,6 +122,10 @@ if (isset($_POST['submit'])) {
 <div class="logo">
     <img style="width: 100px; height: 100px;" src="assets/img/gettransok.png">
 </div>
+    <?php if ( isset($_SESSION["flash_data"]) ): ?>
+        <p><?= $_SESSION["flash_data"]["msg"] ?></p>
+        <?php unset($_SESSION["flash_data"]) ?>
+    <?php endif ?>
     <form action="" method="post">
         <div class="form-item">
             <p class="formLabel">username</p>
