@@ -248,6 +248,64 @@ class functions {
 		}
 	}
 
+	public function inputmobil_add($data)
+	{
+		$merk = $data['merk'];
+		$jenis = $data ['jenis'];
+		$plat = $data['plat'];
+		$gambar = $_FILES['gambar']['name'];
+		$gambar_tmp = $_FILES['gambar']['tmp_name'];
+
+		move_uploaded_file($gambar_tmp, "../assets/mobil/" . $gambar);
+
+		$insert = $this->exe("INSERT INTO mobil(merk,jenis,plat,gambar) VALUES ('$merk','$jenis','$plat', '$gambar')");
+
+		if ( $insert > 0 ) {
+			$this->notif("INPUT BERHASIL!","success");
+			$this->redirect("input_mobil.php");
+		} else {
+			$this->notif(mysqli_error($this->conn),"danger");
+			return "0";
+		}
+
+	}
+
+	public function register($data)
+	{
+		$username = $data['username'];
+		$password = $data['password'];
+
+		$insert = $this->exe("INSERT INTO users(username,password,level) VALUES ('$username','$password','user')");
+
+		if ( $insert > 0 ) {
+			$this->notif("REGISTER BERHASIL!","success");
+		} else {
+			$this->notif("REGISTER GAGAL!","danger");
+			return "0";
+		}
+
+	}
+
+	public function mobil_get($id_mobil = null)
+	{
+		if ($id_mobil == null) {
+			$query = "SELECT * FROM mobil";
+			if ( $this->num_rows($query) < 1 ) {
+				return 3;
+			} else {
+				return $this->query($query);
+			}
+		} else {
+			$query = "SELECT * FROM mobil WHERE id_mobil = '$id_mobil'";
+			if ( $this->num_rows($query) < 1 ) {
+				return 3;
+			} else {
+				return $this->get_data($query);
+			}
+		}
+	}
+
+
 	public function send_mail($email, $order_details)
 	{
 

@@ -1,3 +1,14 @@
+<?php 
+include 'config/functions.php';
+
+$myfunc = new functions();
+
+if (isset($_POST['submit'])) {
+    $myfunc->register($_POST);
+}
+
+
+ ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -111,9 +122,10 @@
 <div class="logo">
     <img style="width: 100px; height: 100px;" src="assets/img/gettransok.png">
 </div>
+    <form action="" method="post">
         <div class="form-item">
-            <p class="formLabel">Email</p>
-            <input type="email" name="email" id="email" class="form-style" autocomplete="off"/>
+            <p class="formLabel">username</p>
+            <input type="text" name="username" id="username" class="form-style" autocomplete="off"/>
         </div>
         <div class="form-item">
             <p class="formLabel">Password</p>
@@ -122,15 +134,16 @@
         </div>
         <div class="form-item">
         <p class="pull-left"><a href="login.php"><small>Back to login</small></a></p>
-        <input type="submit" class="login pull-right" value="Register">
+        <input name="submit" type="submit" class="login pull-right" value="Register">
         <div class="clear-fix"></div>
         </div>
+    </form>
 </div>
 </div>
 
 <script>
     $(document).ready(function(){
-        var formInputs = $('input[type="email"],input[type="password"]');
+        var formInputs = $('input[type="text"],input[type="password"]');
         formInputs.focus(function() {
            $(this).parent().children('p.formLabel').addClass('formTop');
            $('div#formWrapper').addClass('darken-bg');

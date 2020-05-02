@@ -13,6 +13,7 @@ if (isset($_GET['selesai'])) {
 
 ?>
 
+<div class="col">
 <div class="content-section col-12 text-center mt-5">
 	<div class="card">
 		<div class="card-header bg-success text-white">
@@ -46,4 +47,5 @@ if (isset($_GET['selesai'])) {
 			</div>
 		</div>
 	</div>
+</div>
 </div>
