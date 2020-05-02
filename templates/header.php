@@ -73,7 +73,7 @@
 	      </ul>
 	      <ul class="navbar-nav">
 	        <li class="nav-item">
-	          <a class="btn btn-danger" href="catalog.php">
+	          <a class="btn btn-danger" href="pesan.php">
 	          	<?php if ( $_SESSION["lang"] == "id" ): ?>
 		          	Pesan Sekarang!
       			<?php else: ?>
