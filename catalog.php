@@ -19,7 +19,7 @@ $get = $myfunc->mobil_get();
 		<?php foreach($get as $row): ?>
 			<div class="col-4 mt-5">
 				<div class="card" style="width: 18rem;">
-				  <img src="<?= $row['gambar']; ?>" class="card-img-top">
+				  <img src="assets/mobil/<?= $row['gambar']; ?>" class="card-img-top">
 				  <div class="card-body">
 				    <h5 class="card-title"><?= $row['merk'] ?></h5>
 				    <p class="card-text"><?= $row['jenis'] ?></p>
