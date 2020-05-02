@@ -164,7 +164,11 @@ if ($_SESSION['level']=="") {
 		var loc = $("#destinationsarea");
 		loc.html("");
 		$.each(selectedDestinations, function(index){
+			<?php if ( $_SESSION["lang"] == "id" ): ?>
 			loc.append("<div class='card mb-3'> <div class='card-body'> <h4><button class='btn btn-danger btn-sm' id='btnCancelDestination' data-id='"+ index +"'>X</button> Tujuan # "+ (index + 1) +"</h4> <div class='row'> <div class='col-md-4 col-5'>Tujuan</div> <div class='col-md-8 col-7'>: "+ selectedDestinations[index].destination +"</div> </div> <div class='row'> <div class='col-md-4 col-5'>Tanggal</div> <div class='col-md-8 col-7'>: "+ selectedDestinations[index].date +"</div> </div> <div class='row'> <div class='col-md-4 col-5'>Waktu</div> <div class='col-md-8 col-7'>: "+ selectedDestinations[index].time +"</div> </div> <h4>"+ selectedDestinations[index].cost +"</h4> </div> </div>")
+			<?php else: ?>
+				loc.append("<div class='card mb-3'> <div class='card-body'> <h4><button class='btn btn-danger btn-sm' id='btnCancelDestination' data-id='"+ index +"'>X</button> Destination # "+ (index + 1) +"</h4> <div class='row'> <div class='col-md-4 col-5'>Destination</div> <div class='col-md-8 col-7'>: "+ selectedDestinations[index].destination +"</div> </div> <div class='row'> <div class='col-md-4 col-5'>Date</div> <div class='col-md-8 col-7'>: "+ selectedDestinations[index].date +"</div> </div> <div class='row'> <div class='col-md-4 col-5'>Time</div> <div class='col-md-8 col-7'>: "+ selectedDestinations[index].time +"</div> </div> <h4>"+ selectedDestinations[index].cost +"</h4> </div> </div>")
+	  		<?php endif ?>
 		});
 	}
 
@@ -210,12 +214,20 @@ if ($_SESSION['level']=="") {
 		var cost = 0;
 
 		if ( destination == 0 ) {
-			alert("Pilih Tujuan Terlebih Dahulu!");
+			<?php if ( $_SESSION["lang"] == "id" ): ?>
+				alert("Pilih Tujuan Terlebih Dahulu!");
+			<?php else: ?>
+				alert("Choose the Destination!");
+	  		<?php endif ?>
 		} else {
 			if ( selectedDestinations.length > 0 ) {
 				var previousDestination = selectedDestinations[countdestination - 1].destination;
 				if ( previousDestination == destination ) {
-					alert("Pilih tujuan yang berbeda!");
+					<?php if ( $_SESSION["lang"] == "id" ): ?>
+						alert("Pilih Tujuan yang Berbeda!");
+					<?php else: ?>
+						alert("Choose the different Destination!");
+			  		<?php endif ?>
 					return;
 				}
 			}
@@ -269,7 +281,11 @@ if ($_SESSION['level']=="") {
 			nohp = $("#txtnohp").val(),
 			email = $("#txtemail").val();
 		if ( countdestination == 0 ) {
-			alert("Pilih tujuan terlebih dahulu!");
+			<?php if ( $_SESSION["lang"] == "id" ): ?>
+				alert("Pilih Tujuan Terlebih Dahulu!");
+			<?php else: ?>
+				alert("Choose the Destination!");
+	  		<?php endif ?>
 		} else {
 			$.ajax({
 				url : "<?= $myfunc->baseurl ?>pesan.php",
