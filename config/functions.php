@@ -9,7 +9,7 @@ class functions {
 	public function __construct()
 	{
 		$this->mail = new PHPMailer();
-		$this->conn = mysqli_connect("localhost","dimas","dimas","db_rentalmobil");
+		$this->conn = mysqli_connect("localhost","root","","db_rentalmobil");
 		$this->baseurl = "http://localhost/get-transfer/";
 	}
 
@@ -229,6 +229,45 @@ class functions {
 			return "0";
 		}
 
+	}
+
+	public function inputpromo_add($data)
+	{
+		$nama = $data['nama_promo'];
+		$gambar = $_FILES['gambar_promo']['name'];
+		$gambar_tmp = $_FILES['gambar_promo']['tmp_name'];
+
+		move_uploaded_file($gambar_tmp, "../assets/promo/" . $gambar);
+
+		$insert = $this->exe("INSERT INTO promo(nama_promo, gambar_promo) VALUES ('$nama', $gambar')");
+
+		if ( $insert > 0 ) {
+			$this->notif("SUCCESS TO INPUT!","success");
+			$this->redirect("input_promo.php");
+		} else {
+			$this->notif(mysqli_error($this->conn),"danger");
+			return "0";
+		}
+
+	}
+
+	public function promo_get($id_pesan = null)
+	{
+		if ($id_pesan == null) {
+			$query = "SELECT * FROM promo";
+			if ( $this->num_rows($query) < 1 ) {
+				return 3;
+			} else {
+				return $this->query($query);
+			}
+		} else {
+			$query = "SELECT * FROM promo WHERE id_promo = '$id_promo'";
+			if ( $this->num_rows($query) < 1 ) {
+				return 3;
+			} else {
+				return $this->get_data($query);
+			}
+		}
 	}
 
 	public function register($data)

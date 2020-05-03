@@ -1,8 +1,30 @@
 <?php 
 
-include 'templates/header.php' 
+include 'templates/header.php'; 
+
+$get = $myfunc->promo_get();
 
 ?>
+<div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+  	<?php foreach ($get as $row): ?>
+	    <div class="carousel-item active" data-interval="10000">
+	      <img src="<?= $row['gambar_promo'] ?>" height="500" class="d-block w-100" alt="...">
+	      <div class="carousel-caption d-none d-md-block">
+		      <h5><?= $row['nama_promo'] ?></h5>
+	      </div>
+	    </div>
+  <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+<?php endforeach; ?>
+</div>
+</div>
 
 <div class="header">
 	<br><br><br><br><br>

@@ -119,6 +119,9 @@
 	                <a href="cek_pesanan.php" class="list-group-item list-group-item-action bg-dark text-white">
 	                    <span class="menu-collapsed">Cek Pesanan</span>
 	                </a>
+	                <a href="input_promo.php" class="list-group-item list-group-item-action bg-dark text-white">
+	                    <span class="menu-collapsed">Input Promo</span>
+	                </a>
 	            </div> 
 	        </ul>
 	    </div> <!-- End Sidebar -->

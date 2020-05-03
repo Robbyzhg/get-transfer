@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 02, 2020 at 10:51 AM
+-- Generation Time: May 02, 2020 at 02:45 PM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.4
 
@@ -40,7 +40,8 @@ CREATE TABLE `mobil` (
 --
 
 INSERT INTO `mobil` (`id_mobil`, `merk`, `jenis`, `plat`, `gambar`) VALUES
-(4, 'Toyota', 'Inova', 'BP 1122 XD', 'Thumnail Innova.jpg');
+(4, 'Toyota', 'Inova', 'BP 1122 XD', 'Thumnail Innova.jpg'),
+(5, 'Toyota', 'Inova', 'BP 1122 XD', 'Thumnail Innova.jpg');
 
 -- --------------------------------------------------------
 
@@ -60,7 +61,9 @@ CREATE TABLE `pesan` (
 --
 
 INSERT INTO `pesan` (`id_pesan`, `note`, `no_telp`, `email`) VALUES
-(1, 'hatihati', '081247901041', 'dimas@gmail.com');
+(1, 'hatihati', '081247901041', 'dimas@gmail.com'),
+(2, 'Pake inova bos', '081247901041', 'robbyproasd@gmail.com'),
+(3, 'Pake inova bos', '081247901041', 'robbyproasd@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -81,7 +84,9 @@ CREATE TABLE `pesandetail` (
 --
 
 INSERT INTO `pesandetail` (`id_detail`, `id_pesan`, `antar`, `waktu`, `price`) VALUES
-(1, 1, 'Kerobokan', '2020-12-12 00:12:00.000000', '$16 - $21');
+(1, 1, 'Kerobokan', '2020-12-12 00:12:00.000000', '$16 - $21'),
+(2, 2, 'Legian', '2020-12-12 00:12:00.000000', '$12 - $17'),
+(3, 3, 'Legian', '2020-12-12 00:12:00.000000', '$12 - $17');
 
 -- --------------------------------------------------------
 
@@ -95,6 +100,14 @@ CREATE TABLE `users` (
   `password` varchar(50) NOT NULL,
   `level` varchar(50) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
+
+--
+-- Dumping data for table `users`
+--
+
+INSERT INTO `users` (`id_user`, `username`, `password`, `level`) VALUES
+(6, 'admin', 'admin123', 'admin'),
+(7, 'user', 'user123', 'user');
 
 --
 -- Indexes for dumped tables
@@ -133,7 +146,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `mobil`
 --
 ALTER TABLE `mobil`
-  MODIFY `id_mobil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id_mobil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `pesan`
@@ -151,7 +164,7 @@ ALTER TABLE `pesandetail`
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
-  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables
