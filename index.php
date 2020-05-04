@@ -9,7 +9,7 @@ $get = $myfunc->promo_get();
   <div class="carousel-inner">
   	<?php foreach ($get as $row): ?>
 	    <div class="carousel-item active" data-interval="10000">
-	      <img src="<?= $row['gambar_promo'] ?>" height="500" class="d-block w-100" alt="...">
+	      <img src="assets/promo/<?= $row['gambar_promo'] ?>" height="500" class="d-block w-100" alt="...">
 	      <div class="carousel-caption d-none d-md-block">
 		      <h5><?= $row['nama_promo'] ?></h5>
 	      </div>

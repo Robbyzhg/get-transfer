@@ -239,7 +239,7 @@ class functions {
 
 		move_uploaded_file($gambar_tmp, "../assets/promo/" . $gambar);
 
-		$insert = $this->exe("INSERT INTO promo(nama_promo, gambar_promo) VALUES ('$nama', $gambar')");
+		$insert = $this->exe("INSERT INTO promo(nama_promo,gambar_promo) VALUES ('$nama','$gambar')");
 
 		if ( $insert > 0 ) {
 			$this->notif("SUCCESS TO INPUT!","success");

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 02, 2020 at 02:45 PM
+-- Generation Time: May 04, 2020 at 10:15 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.4
 
@@ -41,7 +41,9 @@ CREATE TABLE `mobil` (
 
 INSERT INTO `mobil` (`id_mobil`, `merk`, `jenis`, `plat`, `gambar`) VALUES
 (4, 'Toyota', 'Inova', 'BP 1122 XD', 'Thumnail Innova.jpg'),
-(5, 'Toyota', 'Inova', 'BP 1122 XD', 'Thumnail Innova.jpg');
+(5, 'Toyota', 'Inova', 'BP 1122 XD', 'Thumnail Innova.jpg'),
+(6, 'Toyota', 'Inova', 'BP 1122 XD', 'Thumnail Innova.jpg'),
+(7, '', '', '', '');
 
 -- --------------------------------------------------------
 
@@ -91,6 +93,25 @@ INSERT INTO `pesandetail` (`id_detail`, `id_pesan`, `antar`, `waktu`, `price`) V
 -- --------------------------------------------------------
 
 --
+-- Table structure for table `promo`
+--
+
+CREATE TABLE `promo` (
+  `id_promo` int(11) NOT NULL,
+  `nama_promo` varchar(100) NOT NULL,
+  `gambar_promo` text NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Dumping data for table `promo`
+--
+
+INSERT INTO `promo` (`id_promo`, `nama_promo`, `gambar_promo`) VALUES
+(2, 'Promo Besar Besaran', 'Thumnail Innova.jpg');
+
+-- --------------------------------------------------------
+
+--
 -- Table structure for table `users`
 --
 
@@ -133,6 +154,12 @@ ALTER TABLE `pesandetail`
   ADD KEY `id_pesan` (`id_pesan`) USING BTREE;
 
 --
+-- Indexes for table `promo`
+--
+ALTER TABLE `promo`
+  ADD PRIMARY KEY (`id_promo`);
+
+--
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -146,7 +173,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `mobil`
 --
 ALTER TABLE `mobil`
-  MODIFY `id_mobil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id_mobil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT for table `pesan`
@@ -159,6 +186,12 @@ ALTER TABLE `pesan`
 --
 ALTER TABLE `pesandetail`
   MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+
+--
+-- AUTO_INCREMENT for table `promo`
+--
+ALTER TABLE `promo`
+  MODIFY `id_promo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`
