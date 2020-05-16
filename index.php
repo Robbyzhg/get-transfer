@@ -8,43 +8,21 @@ $get = $myfunc->promo_get();
 <div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
   	<?php foreach ($get as $row): ?>
-	    <div class="carousel-item active" data-interval="10000">
-	      <img src="assets/promo/<?= $row['gambar_promo'] ?>" height="500" class="d-block w-100" alt="...">
-	      <div class="carousel-caption d-none d-md-block">
-		      <h5><?= $row['nama_promo'] ?></h5>
-	      </div>
-	    </div>
-  <a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-<?php endforeach; ?>
+        <div class="carousel-item active" data-interval="10000">
+        	<img src="assets/promo/<?= $row['gambar_promo'] ?>" height="500" class="d-block w-100">
+        </div>
+		<a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
+		    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+		    <span class="sr-only">Previous</span>
+		</a>
+		<a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
+		    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+		    <span class="sr-only">Next</span>
+		</a>
+  	<?php endforeach; ?>
 </div>
 </div>
-
-<div class="header">
-	<br><br><br><br><br>
-	<h1>
-		<?php if ( $_SESSION["lang"] == "id" ): ?>
-			Penjemputan Aman, Nyaman, dan Terpercaya!
-		<?php else: ?>
-      		Secure, Comfortable and Reliable Pickup!
-  		<?php endif ?>
-	</h1>
-	<br><br>
-	<a href="pesan.php" class="btn btn-outline-success rounded-pill">
-		<?php if ( $_SESSION["lang"] == "id" ): ?>
-			Pesan Sekarang
-		<?php else: ?>
-			Order Now
-  		<?php endif ?>
-	</a>
-</div>
-<br><br><br>
+<br><br>
 <div class="container">
 	<div class="row">
 		<div class="col-12">

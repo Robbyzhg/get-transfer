@@ -97,6 +97,18 @@ class functions {
 		}
 	}
 
+	public function promo_delete($id_promo)
+	{
+		$this->exe("DELETE FROM promo WHERE id_promo = '$id_promo'");
+		if ( $delete > 0 ) {
+			$this->notif("Promo di Delete","success");
+			$this->redirect($this->baseurl . "admin/input_promo.php");
+		} else {
+			$this->notif("Gagal! Kesalahan pada query","danger");
+			$this->redirect($this->baseurl . "admin/input_promo.php");
+		}
+	}
+
 	public function get_destinations()
 	{
 		return ["Kuta","Legian","Seminyak","Kerobokan","Jimbaran","Nusa Dua","Uluwatu","Canggu","Tanahlot","Ubud","Tegalalang","Kintamani","Candidasa","Amed","Lovina","Pemuteran","Gilimanuk","Tabanan","Negara","DPS","Sanur"];
@@ -233,13 +245,12 @@ class functions {
 
 	public function inputpromo_add($data)
 	{
-		$nama = $data['nama_promo'];
 		$gambar = $_FILES['gambar_promo']['name'];
 		$gambar_tmp = $_FILES['gambar_promo']['tmp_name'];
 
 		move_uploaded_file($gambar_tmp, "../assets/promo/" . $gambar);
 
-		$insert = $this->exe("INSERT INTO promo(nama_promo,gambar_promo) VALUES ('$nama','$gambar')");
+		$insert = $this->exe("INSERT INTO promo(gambar_promo) VALUES ('$gambar')");
 
 		if ( $insert > 0 ) {
 			$this->notif("SUCCESS TO INPUT!","success");
