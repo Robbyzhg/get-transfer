@@ -20,7 +20,13 @@ $get = $myfunc->promo_get();
 		    <span class="sr-only">Next</span>
 		</a>
 		<div class="carousel-caption d-none d-md-block">
-	        <a href="pesan.php" class="btn btn-danger">Pesan Sekarang!</a>
+	        <a href="pesan.php" class="btn btn-danger">
+	        	<?php if ($_SESSION['lang'] == "id"): ?>
+	        		Pesan Sekarang!
+	        	<?php else: ?>
+	        		Order Now!
+	        	<?php endif ?>
+	        </a>
 		</div>
   	<?php endforeach; ?>
 </div>

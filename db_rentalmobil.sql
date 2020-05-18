@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: May 04, 2020 at 10:15 AM
+-- Generation Time: May 18, 2020 at 10:51 AM
 -- Server version: 10.4.11-MariaDB
 -- PHP Version: 7.4.4
 
@@ -58,15 +58,6 @@ CREATE TABLE `pesan` (
   `email` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
---
--- Dumping data for table `pesan`
---
-
-INSERT INTO `pesan` (`id_pesan`, `note`, `no_telp`, `email`) VALUES
-(1, 'hatihati', '081247901041', 'dimas@gmail.com'),
-(2, 'Pake inova bos', '081247901041', 'robbyproasd@gmail.com'),
-(3, 'Pake inova bos', '081247901041', 'robbyproasd@gmail.com');
-
 -- --------------------------------------------------------
 
 --
@@ -81,15 +72,6 @@ CREATE TABLE `pesandetail` (
   `price` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
---
--- Dumping data for table `pesandetail`
---
-
-INSERT INTO `pesandetail` (`id_detail`, `id_pesan`, `antar`, `waktu`, `price`) VALUES
-(1, 1, 'Kerobokan', '2020-12-12 00:12:00.000000', '$16 - $21'),
-(2, 2, 'Legian', '2020-12-12 00:12:00.000000', '$12 - $17'),
-(3, 3, 'Legian', '2020-12-12 00:12:00.000000', '$12 - $17');
-
 -- --------------------------------------------------------
 
 --
@@ -98,7 +80,6 @@ INSERT INTO `pesandetail` (`id_detail`, `id_pesan`, `antar`, `waktu`, `price`) V
 
 CREATE TABLE `promo` (
   `id_promo` int(11) NOT NULL,
-  `nama_promo` varchar(100) NOT NULL,
   `gambar_promo` text NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
@@ -106,8 +87,8 @@ CREATE TABLE `promo` (
 -- Dumping data for table `promo`
 --
 
-INSERT INTO `promo` (`id_promo`, `nama_promo`, `gambar_promo`) VALUES
-(2, 'Promo Besar Besaran', 'Thumnail Innova.jpg');
+INSERT INTO `promo` (`id_promo`, `gambar_promo`) VALUES
+(5, 'voucher-go-jek-gratis-feb-2020.png');
 
 -- --------------------------------------------------------
 
@@ -191,7 +172,7 @@ ALTER TABLE `pesandetail`
 -- AUTO_INCREMENT for table `promo`
 --
 ALTER TABLE `promo`
-  MODIFY `id_promo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id_promo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `users`
