@@ -19,6 +19,9 @@ $get = $myfunc->promo_get();
 		    <span class="carousel-control-next-icon" aria-hidden="true"></span>
 		    <span class="sr-only">Next</span>
 		</a>
+		<div class="carousel-caption d-none d-md-block">
+	        <a href="pesan.php" class="btn btn-danger">Pesan Sekarang!</a>
+		</div>
   	<?php endforeach; ?>
 </div>
 </div>
