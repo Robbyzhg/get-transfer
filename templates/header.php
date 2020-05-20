@@ -38,22 +38,49 @@
 	 
 	    <div class="collapse navbar-collapse" id="navbarSupportedContent">
 	 
-	      <ul class="navbar-nav mr-auto">
+	      <ul class="navbar-nav ml-auto">
 	        <li class="nav-item">
 	          	<a class="nav-link" href="index.php">
 	          		<?php if ( $_SESSION["lang"] == "id" ): ?>
-	          			Beranda
+	          			Kenapa Kami?
           			<?php else: ?>
-		          		Home
+		          		Why Us?
 	          		<?php endif ?>
 	      		</a>
 	        </li>
 	        <li class="nav-item">
 	          <a class="nav-link" href="catalog.php">
 	          	<?php if ( $_SESSION["lang"] == "id" ): ?>
-          			Katalog
+          			Layanan Kami
       			<?php else: ?>
-		          	Catalog
+		          	Our Service
+          		<?php endif ?>
+	          </a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" href="catalog.php">
+	          	<?php if ( $_SESSION["lang"] == "id" ): ?>
+          			Komentar
+      			<?php else: ?>
+		          	Feedback
+          		<?php endif ?>
+	          </a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" href="catalog.php">
+	          	<?php if ( $_SESSION["lang"] == "id" ): ?>
+          			Tentang Kami
+      			<?php else: ?>
+		          	About us
+          		<?php endif ?>
+	          </a>
+	        </li>
+	        <li class="nav-item">
+	          <a class="nav-link" href="catalog.php">
+	          	<?php if ( $_SESSION["lang"] == "id" ): ?>
+          			Kontak Kami
+      			<?php else: ?>
+		          	Contact Us
           		<?php endif ?>
 	          </a>
 	        </li>
@@ -69,17 +96,6 @@
 	            <a class="dropdown-item" href="?setlang=en">English</a>
 	            <a class="dropdown-item" href="?setlang=id">Indonesia</a>
 	          </div>
-	        </li>
-	      </ul>
-	      <ul class="navbar-nav">
-	        <li class="nav-item">
-	          <a class="btn btn-danger" href="pesan.php">
-	          	<?php if ( $_SESSION["lang"] == "id" ): ?>
-		          	Pesan Sekarang!
-      			<?php else: ?>
-		          	Order Now!
-          		<?php endif ?>
-	          </a>
 	        </li>
 	      </ul>
 	      <?php if ( isset($_SESSION["level"]) == "user" ): ?>

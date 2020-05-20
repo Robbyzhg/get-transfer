@@ -10,7 +10,7 @@ class functions {
 	{
 		$this->mail = new PHPMailer();
 		$this->conn = mysqli_connect("localhost","root","","db_rentalmobil");
-		$this->baseurl = "http://localhost/get-transfer/";
+		$this->baseurl = "https://gettrans.id";
 	}
 
 	public function get_last_id($table,$column)
