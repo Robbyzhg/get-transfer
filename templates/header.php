@@ -16,7 +16,7 @@
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
-	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link rel="stylesheet" type="text/css" href="../assets/css/style.css">
 	<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 	<script src="assets/js/bootstrap.min.js"></script>
 	<script src="assets/js/bootstrap.js"></script>
@@ -25,6 +25,11 @@
 	
 	<title>Get Transfer</title>
 </head>
+<style>
+	html{
+		scroll-behavior: smooth;
+	}
+</style>
 <body>
 	<nav class="navbar navbar-expand-lg navbar-dark bg-success">
 	 
@@ -40,6 +45,15 @@
 	 
 	      <ul class="navbar-nav ml-auto">
 	        <li class="nav-item">
+	          <a class="nav-link" href="#section2">
+	          	<?php if ( $_SESSION["lang"] == "id" ): ?>
+	      			Layanan Kami
+	  			<?php else: ?>
+		          	Our Service
+	      		<?php endif ?>
+	          </a>
+	        </li>
+	        <li class="nav-item">
 	          	<a class="nav-link" href="index.php">
 	          		<?php if ( $_SESSION["lang"] == "id" ): ?>
 	          			Kenapa Kami?
@@ -47,15 +61,6 @@
 		          		Why Us?
 	          		<?php endif ?>
 	      		</a>
-	        </li>
-	        <li class="nav-item">
-	          <a class="nav-link" href="catalog.php">
-	          	<?php if ( $_SESSION["lang"] == "id" ): ?>
-          			Layanan Kami
-      			<?php else: ?>
-		          	Our Service
-          		<?php endif ?>
-	          </a>
 	        </li>
 	        <li class="nav-item">
 	          <a class="nav-link" href="catalog.php">
@@ -101,7 +106,7 @@
 	      <?php if ( isset($_SESSION["level"]) == "user" ): ?>
 		      <a href="logout.php" class="btn btn-outline-light ml-2">Logout</a>
 	      <?php else: ?>
-		      <a href="login.php" class="btn btn-outline-light ml-2">Login</a>
+		      <a href="register.php" class="btn btn-outline-light ml-2">Join us</a>
 	      <?php endif ?>
 	   </div>
 	</nav>

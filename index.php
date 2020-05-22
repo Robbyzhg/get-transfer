@@ -32,82 +32,145 @@ $get = $myfunc->promo_get();
 </div>
 </div>
 <br><br>
-<div class="container">
+
+<div id="section2" class="container">
 	<div class="row">
 		<div class="col-12">
-			<div class="whyus text-center">
+			<div class="ourservice text-center">
 			<h2>
 				<?php if ( $_SESSION["lang"] == "id" ): ?>
-					KENAPA HARUS PILIH KAMI?
+					Layanan Kami
 				<?php else: ?>
-					WHY SHOULD CHOOSE US ?
+					Our Service
 				<?php endif ?>
 			</h2>
-			<hr style="color: green;" size="15px" color="green" width="450px">
+			<hr style="color: green;" size="15px" color="green" width="1000px">
 		</div>
 		</div>
 	</div>
 </div>
-<br><br><br>
-<div class="container">
-	<div class="row">
+<div class="container" style="height: 300px;">
+	<div style="background-color: green;" class="row rounded">
 		<div class="col-4">
-			<div style="color: black; border: 0px;" class="card text-center">
-				<h3 class="card-title">
+			<br>
+			<div style="color: black; border: 0px;" class="text-center">
+				<img class="border border-white rounded" src="assets/img/mobil2.jpg" width="100px;" height="100px;">
+				<strong><p style="color: white;">
 					<?php if ( $_SESSION["lang"] == "id" ): ?>
-						HARGA TERJANGKAU!
+						Sewa Mobil
 					<?php else: ?>
-						AFFORDABLE PRICES!
+						Car Rental
 					<?php endif ?>
-				</h3>
-				<p class="card-text">
+				</p></strong>
+			</div>
+		</div>
+		<div class="col-4">
+			<br>
+			<div style="color: black; border: 0px;" class="text-center">
+				<img class="border border-white rounded" src="assets/img/travel.jpg" width="100px;" height="100px;">
+				<strong><p style="color: white;">
+					<?php if ( $_SESSION["lang"] == "id" ): ?>
+						Perjalanan
+					<?php else: ?>
+						Travel
+					<?php endif ?>
+				</p></strong>
+			</div>
+		</div>
+		<div class="col-4">
+			<br>
+			<div style="color: black; border: 0px;" class="text-center">
+				<img class="border border-white rounded" src="assets/img/hotel.jpg" width="100px;" height="100px;">
+				<strong><p style="color: white;">
+					<?php if ( $_SESSION["lang"] == "id" ): ?>
+						Penginapan
+					<?php else: ?>
+						Hotel
+					<?php endif ?>
+				</p></strong>
+			</div>
+		</div>
+	</div>
+</div>
+<div id="section2" class="container">
+	<div class="row">
+		<div class="col-12">
+			<div class="ourservice text-center">
+			<strong><h2>
+				<?php if ( $_SESSION["lang"] == "id" ): ?>
+					Kenapa Kami?
+				<?php else: ?>
+					Why Us?
+				<?php endif ?>
+			</h2></strong>
+			<hr style="color: green;" size="15px" color="green" width="1000px">
+		</div>
+		</div>
+	</div>
+</div>
+<div class="container" style="height: 300px;">
+	<div style="background-color: green;" class="row rounded">
+		<div class="col-4">
+			<br>
+			<div style="color: black; border: 0px;" class="text-center">
+				<img src="assets/img/payment.png" width="100px;" height="100px;">
+				<strong><p class="mt-2" style="color: white;">
+					<?php if ( $_SESSION["lang"] == "id" ): ?>
+						HARGA TERJANGKAU
+					<?php else: ?>
+						AFFORDABLE PRICE
+					<?php endif ?>
+				</p></strong>
+				<h5 style="color: white; border: 1px solid white;">
 					<?php if ( $_SESSION["lang"] == "id" ): ?>
 						Harga yang Pas di Kantong
 					<?php else: ?>
-						Suitable Price
+						The Price is Right in The Bag
 					<?php endif ?>
-				</p>
+				</h5>
 			</div>
 		</div>
 		<div class="col-4">
-			<div style="color: black; border: 0px;" class="card text-center">
-				<h3 class="card-title">
+			<br>
+			<div style="color: black; border: 0px;" class="text-center">
+				<img src="assets/img/shield.png" width="100px;" height="100px;">
+				<strong><p class="mt-2" style="color: white;">
 					<?php if ( $_SESSION["lang"] == "id" ): ?>
-						KEAMANAN TERJAMIN!
+						KEAMANAN TERJAMIN
 					<?php else: ?>
-						GUARANTEED SECURITY!
+						GUARANTEED SECURITY
 					<?php endif ?>
-				</h3>
-				<p class="card-text">
+				</p></strong>
+				<h5 style="color: white; border: 1px solid white;">
 					<?php if ( $_SESSION["lang"] == "id" ): ?>
-						Resmi dan dijaga
+						Resmi dan Dijaga
 					<?php else: ?>
 						Official and Guarded
 					<?php endif ?>
-				</p>
+				</h5>
 			</div>
+
 		</div>
 		<div class="col-4">
-			<div style="color: black; border: 0px;" class="card text-center">
-				<h3 class="card-title">
+			<br>
+			<div style="color: black; border: 0px;" class="text-center">
+				<img src="assets/img/payment2.png" width="100px;" height="100px;">
+				<strong><p class="mt-2" style="color: white;">
 					<?php if ( $_SESSION["lang"] == "id" ): ?>
-						TIDAK ADA BAYARAN LEBIH!
+						TIDAK ADA BAYARAN LEBIH
 					<?php else: ?>
-						NO MORE PAYMENT!
+						THERE IS NO MORE PAYMENT
 					<?php endif ?>
-				</h3>
-				<p class="card-text">
+				</p></strong>
+				<h5 style="color: white; border: 1px solid white;">
 					<?php if ( $_SESSION["lang"] == "id" ): ?>
-						Pajak dan Lain-Lain Sudah Termasuk
+						Sudah Termasuk Pajak dan Lain-lain
 					<?php else: ?>
-						Including tax and others
+						Including Tax and Others
 					<?php endif ?>
-				</p>
+				</h5>
 			</div>
 		</div>
 	</div>
 </div>
-<br><br><br><br><br><br>
 
-
-<?php include 'templates/footer.php' ?>
