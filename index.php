@@ -2,175 +2,204 @@
 
 include 'templates/header.php'; 
 
-$get = $myfunc->promo_get();
+$myfunc = new functions();
+
+if ( isset($_GET['setlang']) ) {
+  $myfunc->set_lang($_GET['setlang']);
+} elseif ( !isset($_SESSION["lang"]) ) {
+  $myfunc->set_lang("id");
+}
 
 ?>
-<div id="carouselExampleInterval" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-  	<?php foreach ($get as $row): ?>
-        <div class="carousel-item active" data-interval="10000">
-        	<img src="assets/promo/<?= $row['gambar_promo'] ?>" height="500" class="d-block w-100">
+    <!-- Jumbotron -->
+    <div id="section2" class="jumbotron jumbotron-fluid">
+      <div class="container">
+        <h1 class="display-4">The <span>Best</span> Price to get round <br>in the City of <span>Bali</span></h1>
+      </div>
+    </div>
+    <!-- Akhir Jumbotron -->
+
+    <!-- Container -->
+    <div class="container">
+      <!-- info panel -->
+      <div class="row justify-content-center">
+        <div class="col-10 info-panel">
+          <div class="row">
+            <div class="col-lg">
+              <a href="pesan.php"><img src="assets/img/taxi.png" alt="Taxi" class="float-left"></a>
+              <h4>
+                <?php if ($_SESSION["lang"] == 'id'): ?>
+                  Taxi Bandara
+                <?php else: ?>
+                  Airport Taxi
+                <?php endif ?>
+              </h4>
+              <p>Lorem ipsum dolor sit amet</p>
+            </div>
+            <div class="col-lg">
+              <a href="pesanhotel.php"><img src="assets/img/hotel.png" alt="Hotel"class="float-left"></a>
+              <h4>
+                <?php if ($_SESSION["lang"] == 'id'): ?>
+                  Penginapan
+                <?php else: ?>
+                  Hotel
+                <?php endif ?>
+              </h4>
+              <p>Lorem ipsum dolor sit amet</p>
+            </div>
+            <div class="col-lg">
+              <a href="pesantravel.php"><img src="assets/img/tour.png" alt="Tour"class="float-left"></a>
+              <h4>
+                <?php if ($_SESSION["lang"] == 'id'): ?>
+                  Wisata dan Perjalanan
+                <?php else: ?>
+                  Tour and Travel
+                <?php endif ?>
+              </h4>
+              <p>Lorem ipsum dolor sit amet</p>
+            </div>
+          </div>
+          
         </div>
-		<a class="carousel-control-prev" href="#carouselExampleInterval" role="button" data-slide="prev">
-		    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-		    <span class="sr-only">Previous</span>
-		</a>
-		<a class="carousel-control-next" href="#carouselExampleInterval" role="button" data-slide="next">
-		    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-		    <span class="sr-only">Next</span>
-		</a>
-		<div class="carousel-caption d-none d-md-block">
-	        <a href="pesan.php" class="btn btn-danger">
-	        	<?php if ($_SESSION['lang'] == "id"): ?>
-	        		Pesan Sekarang!
-	        	<?php else: ?>
-	        		Order Now!
-	        	<?php endif ?>
-	        </a>
-		</div>
-  	<?php endforeach; ?>
-</div>
-</div>
-<br><br>
+        
+      </div>
+      <!-- Akhir info Panel -->
 
-<div id="section2" class="container">
-	<div class="row">
-		<div class="col-12">
-			<div class="ourservice text-center">
-			<h2>
-				<?php if ( $_SESSION["lang"] == "id" ): ?>
-					Layanan Kami
-				<?php else: ?>
-					Our Service
-				<?php endif ?>
-			</h2>
-			<hr style="color: green;" size="15px" color="green" width="1000px">
-		</div>
-		</div>
-	</div>
-</div>
-<div class="container" style="height: 300px;">
-	<div style="background-color: green;" class="row rounded">
-		<div class="col-4">
-			<br>
-			<div style="color: black; border: 0px;" class="text-center">
-				<img class="border border-white rounded" src="assets/img/mobil2.jpg" width="100px;" height="100px;">
-				<strong><p style="color: white;">
-					<?php if ( $_SESSION["lang"] == "id" ): ?>
-						Sewa Mobil
-					<?php else: ?>
-						Car Rental
-					<?php endif ?>
-				</p></strong>
-			</div>
-		</div>
-		<div class="col-4">
-			<br>
-			<div style="color: black; border: 0px;" class="text-center">
-				<img class="border border-white rounded" src="assets/img/travel.jpg" width="100px;" height="100px;">
-				<strong><p style="color: white;">
-					<?php if ( $_SESSION["lang"] == "id" ): ?>
-						Perjalanan
-					<?php else: ?>
-						Travel
-					<?php endif ?>
-				</p></strong>
-			</div>
-		</div>
-		<div class="col-4">
-			<br>
-			<div style="color: black; border: 0px;" class="text-center">
-				<img class="border border-white rounded" src="assets/img/hotel.jpg" width="100px;" height="100px;">
-				<strong><p style="color: white;">
-					<?php if ( $_SESSION["lang"] == "id" ): ?>
-						Penginapan
-					<?php else: ?>
-						Hotel
-					<?php endif ?>
-				</p></strong>
-			</div>
-		</div>
-	</div>
-</div>
-<div id="section2" class="container">
-	<div class="row">
-		<div class="col-12">
-			<div class="ourservice text-center">
-			<strong><h2>
-				<?php if ( $_SESSION["lang"] == "id" ): ?>
-					Kenapa Kami?
-				<?php else: ?>
-					Why Us?
-				<?php endif ?>
-			</h2></strong>
-			<hr style="color: green;" size="15px" color="green" width="1000px">
-		</div>
-		</div>
-	</div>
-</div>
-<div class="container" style="height: 300px;">
-	<div style="background-color: green;" class="row rounded">
-		<div class="col-4">
-			<br>
-			<div style="color: black; border: 0px;" class="text-center">
-				<img src="assets/img/payment.png" width="100px;" height="100px;">
-				<strong><p class="mt-2" style="color: white;">
-					<?php if ( $_SESSION["lang"] == "id" ): ?>
-						HARGA TERJANGKAU
-					<?php else: ?>
-						AFFORDABLE PRICE
-					<?php endif ?>
-				</p></strong>
-				<h5 style="color: white; border: 1px solid white;">
-					<?php if ( $_SESSION["lang"] == "id" ): ?>
-						Harga yang Pas di Kantong
-					<?php else: ?>
-						The Price is Right in The Bag
-					<?php endif ?>
-				</h5>
-			</div>
-		</div>
-		<div class="col-4">
-			<br>
-			<div style="color: black; border: 0px;" class="text-center">
-				<img src="assets/img/shield.png" width="100px;" height="100px;">
-				<strong><p class="mt-2" style="color: white;">
-					<?php if ( $_SESSION["lang"] == "id" ): ?>
-						KEAMANAN TERJAMIN
-					<?php else: ?>
-						GUARANTEED SECURITY
-					<?php endif ?>
-				</p></strong>
-				<h5 style="color: white; border: 1px solid white;">
-					<?php if ( $_SESSION["lang"] == "id" ): ?>
-						Resmi dan Dijaga
-					<?php else: ?>
-						Official and Guarded
-					<?php endif ?>
-				</h5>
-			</div>
+      <!-- Judul Kenapa Harus Kami -->
+      <div class="row">
+        <div id="section1" class="judulharuskami">
+          <div class="col-lg judul-kami">
+            <h3>
+              <?php if ($_SESSION["lang"] == 'id'): ?>
+                KENAPA HARUS MEMILIH KAMI?
+              <?php else: ?>
+                WHY MUST CHOOSE US?
+              <?php endif ?>
+          </h3>
+          </div>
+        </div>
+      </div>
+      <!-- Akhir Judul Harus Kami-->
+      <!-- info kami -->
+      <div class="row justify-content-center">
+        <div class="col-lg info-kami justify-content-center d-flex">
+          <div class="row">
+            <div class="col-lg">
+              <img src="assets/img/payment4.png" alt="Taxi" class="img-fluid float-left">
+              <h4>
+                <?php if ($_SESSION["lang"] == 'id'): ?>
+                  HARGA TERJANGKAU
+                <?php else: ?>
+                  AFFORDABLE PRICES
+                <?php endif ?>
+              </h4>
+              <p>Lorem ipsum dolor sit amet</p>
+            </div>
+            <div class="col-lg">
+              <img src="assets/img/shield2.png" alt="Hotel"class="img-fluid float-left">
+              <h4>
+                <?php if ($_SESSION["lang"] == 'id'): ?>
+                  KEAMANAN TERJAMIN
+                <?php else: ?>
+                  GUARANTEED SECURITY
+                <?php endif ?>
+              </h4>
+              <p>Lorem ipsum dolor sit amet</p>
+            </div>
+            <div class="col-lg">
+              <img src="assets/img/payment3.png" alt="Tour"class="img-fluid float-left">
+              <h4>
+                <?php if ($_SESSION["lang"] == 'id'): ?>
+                  TIDAK ADA BAYARAN LEBIH
+                <?php else: ?>
+                  NO MORE PAYMENT
+                <?php endif ?>
+              </h4>
+              <p>Lorem ipsum dolor sit amet</p>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+      <!-- Akhir info kami -->
 
-		</div>
-		<div class="col-4">
-			<br>
-			<div style="color: black; border: 0px;" class="text-center">
-				<img src="assets/img/payment2.png" width="100px;" height="100px;">
-				<strong><p class="mt-2" style="color: white;">
-					<?php if ( $_SESSION["lang"] == "id" ): ?>
-						TIDAK ADA BAYARAN LEBIH
-					<?php else: ?>
-						THERE IS NO MORE PAYMENT
-					<?php endif ?>
-				</p></strong>
-				<h5 style="color: white; border: 1px solid white;">
-					<?php if ( $_SESSION["lang"] == "id" ): ?>
-						Sudah Termasuk Pajak dan Lain-lain
-					<?php else: ?>
-						Including Tax and Others
-					<?php endif ?>
-				</h5>
-			</div>
-		</div>
-	</div>
-</div>
+      
+      <!-- Testimonial -->
+      <section id="section3" class="testimonial">
+        <div class="row justify-content-center">
+          <div class="col-10 justify-content-center d-flex">
+            <h5>"Sopirnya sangat Ramah Sekali dan tahu jalan banget"</h5>
+          </div>
+        </div>
 
+        <div class="row justify-content-center">
+          <div class="col-lg-6 d-flex justify-content-center">
+            <figure class="figure">
+              <img src="assets/img/img1.png" class="figure-img img-fluid rounded-circle" alt="img 1">
+            </figure>
+            <figure class="figure">
+              <img src="assets/img/img2.png" class="figure-img img-fluid rounded-circle utama" alt="img 2">
+              <figcaption class="figure-caption">
+                <h5>Sellena Princes</h5>
+                <p>Doctor</p>
+              </figcaption>
+            </figure>
+            <figure class="figure">
+              <img src="assets/img/img3.png" class="figure-img img-fluid rounded-circle" alt="img 3">
+            </figure>
+          </div>
+          
+        </div>
+      </section>
+      <!-- Akhir Testimonial -->
+
+      <!-- Tentang dan Hubungi -->
+      <div id="section4" class="row hubungi justify-content-center">
+        <div class="col-lg justify-content-center d-flex">
+          <div class="row">
+            <div class="col-lg">
+              <h4>
+                <?php if ($_SESSION["lang"] == 'id'): ?>
+                  TENTANG KAMI
+                <?php else: ?>
+                  ABOUT US
+                <?php endif ?>
+              </h4>
+              <p>
+                <?php if ($_SESSION["lang"] == 'id'): ?>
+                  GetTrans.id adalah perusahaan yang bergerak
+          dibidang tour travel, yang bisa dipesan melalui online/offline.
+          GetTrans hanya bisa dibooking untuk wilayah Bali.
+                <?php else: ?>
+                  GetTrans.id is a company engaged
+                  in the field of tour travel, which can be ordered via online / offline.
+                  GetTrans can only be booked for the Bali area.
+                <?php endif ?>
+        </p>
+            </div>
+            <div class="col-lg">
+              <h4>
+                <?php if ($_SESSION["lang"] == 'id'): ?>
+                  HUBUNGI KAMI
+                <?php else: ?>
+                  CONTACT US
+                <?php endif ?>
+              </h4>
+              <p>Phone: +62 811122233</p>
+              <p>Email: gettrans.rgb@gmail.com</p>
+              <p>Fax:(0331) 45678</p>
+            </div>
+            <div class="col-lg justify-content-center d-flex">
+              <img src="assets/img/map.png" alt="map"class="img-fluid">
+            </div> 
+          </div>          
+        </div>
+        
+      </div>
+      <!-- Akhir Tentang dan Hubungi -->
+            
+    </div>
+    <!-- Akhir Container -->
+
+
+<?php include 'templates/footer.php' ?>

@@ -9,10 +9,6 @@ if (isset($_POST['submit'])) {
 }
 
 
-if ($_SESSION['level']=="") {
-	header("location:login.php?pesan=gagal");
-}
-
 
 ?>
 <br><br>

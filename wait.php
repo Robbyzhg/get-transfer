@@ -2,7 +2,7 @@
 <div class="container">
 	<div class="row mt-5">
 		<div class="col-12">
-			<div class="jumbotron">
+			<div class="">
 			  <center><h1 class="display-4">
 			  	<?php if ( $_SESSION["lang"] == "id" ): ?>
 				  	Silahkan Tunggu Pesanan Anda
