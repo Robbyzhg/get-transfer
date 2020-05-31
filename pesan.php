@@ -179,13 +179,19 @@ if (isset($_POST['submit'])) {
 
 		peta = new google.maps.Map(document.getElementById("map-box"), propertiPeta);
 
+		new google.maps.Marker({
+			position: new google.maps.LatLng("-8.746928", "115.165099"),
+			map: peta,
+			icon: "assets/img/titikjemput.png"
+		});
+
 		if ( selectedCoordinate.length > 0 ) {
 			$.each(selectedCoordinate, function(index){
 				var coordinate = selectedCoordinate[index].split(",");
 				new google.maps.Marker({
 					position: new google.maps.LatLng(coordinate[0],coordinate[1]),
 					map: peta,
-					icon: "assets/img/titikjemput.png"
+					icon: "assets/img/titikantar.png"
 				});
 			});
 		}
