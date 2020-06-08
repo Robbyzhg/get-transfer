@@ -156,29 +156,51 @@ class functions {
 	// }
 	public function get_destination_cost($pickup, $destination)
 	{
-		if ( $pickup == "Kuta" ) {
+		// $data = [
+		// 		"Airport" => "",
+		// 		"Legian" => "",
+		// 		"Seminyak" => "",
+		// 		"Kerobokan" => "",
+		// 		"Jimbaran" => "",
+		// 		"Nusa Dua" => "",
+		// 		"Uluwatu" => "",
+		// 		"Canggu" => "",
+		// 		"Tanahlot" => "",
+		// 		"Ubud" => "",
+		// 		"Payangan" => "",
+		// 		"Tegalalang" => "",
+		// 		"Kintamani" => "",
+		// 		"Candidasa" => "",
+		// 		"Amed" => "",
+		// 		"Lovina" => "",
+		// 		"Pemuteran" => "",
+		// 		"Gilimanuk" => "",
+		// 		"Tabanan" => "",
+		// 		"Negara" => "",
+		// 		"Kuta" => ""
+		// 	];
+		if ( $pickup == "Airport" ) {
 			$data = [
-				"Kuta" => "$10 - $15",
-				"Legian" => "$12 - $17",
-				"Seminyak" => "$15 - $20",
-				"Kerobokan" => "$16 - $21",
-				"Jimbaran" => "$11 - $16",
-				"Nusa Dua" => "$17 - $22",
-				"Uluwatu" => "$20 - $25",
-				"Canggu" => "$18 - $23",
-				"Tanahlot" => "$25 - $30",
-				"Ubud" => "$26 - $31",
-				"Tegalalang" => "$30 - $35",
-				"Kintamani" => "$32 - $37",
-				"Candidasa" => "$32 - $37",
-				"Amed" => "$45 - $50",
-				"Lovina" => "$60 - $70",
-				"Pemuteran" => "$75 - $85",
-				"Gilimanuk" => "$70 - $75",
-				"Tabanan" => "$50 - $55",
-				"Negara" => "$66 - $71",
-				"DPS" => "$20 - $25",
-				"Sanur" => "$18 - $23"
+				"Legian" => "13.20",
+				"Seminyak" => "15.00",
+				"Kerobokan" => "22.20",
+				"Jimbaran" => "16.05",
+				"Nusa Dua" => "22.05",
+				"Uluwatu" => "32.25",
+				"Canggu" => "30.30",
+				"Tanahlot" => "40.35",
+				"Ubud" => "57.15",
+				"Payangan" => "78.30",
+				"Tegalalang" => "76.35",
+				"Kintamani" => "108.30",
+				"Candidasa" => "97.05",
+				"Amed" => "134.40",
+				"Lovina" => "138.75",
+				"Pemuteran" => "204.00",
+				"Gilimanuk" => "208.50",
+				"Tabanan" => "51.06",
+				"Negara" => "160.50",
+				"Kuta" => "7.20"
 			];
 		}
 	}
