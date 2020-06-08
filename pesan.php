@@ -207,6 +207,25 @@ if (isset($_POST['submit'])) {
 		}
 	});
 
+	$("#cmbdestination").on("change",function(){
+		var previous = $(this).val();
+		if ( previous == "0" ) {
+			destination = null;
+			mapInitialize();
+		} else {
+		    $.ajax({
+				url : "<?= $myfunc->baseurl ?>config/request.php",
+				data : { destination : previous, get_destination_coordinate : true },
+				type : "post",
+				dataType : "text",
+				success : function(result) {
+					destination = result;
+					mapInitialize();
+				}
+			});
+		}
+	});
+
 	// function markOnMap(coordinate)
 	// {
 	// 	selectedCoordinate.push(coordinate);
