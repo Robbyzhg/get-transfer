@@ -9,8 +9,8 @@ class functions {
 	public function __construct()
 	{
 		$this->mail = new PHPMailer();
-		$this->conn = mysqli_connect("localhost","root","","db_rentalmobil");
-		$this->baseurl = "http://gettrans.id/";
+		$this->conn = mysqli_connect("localhost","dimas","dimas","db_rentalmobil");
+		$this->baseurl = "http://localhost/get-transfer/";
 	}
 
 	public function get_last_id($table,$column)
@@ -197,7 +197,7 @@ class functions {
 			$this->exe("INSERT INTO pesandetail VALUES ('$id_detail','$id_pesan','$antar','$waktu','$price')");
 		}
 
-		$this->send_mail($email,$destinations);
+		// $this->send_mail($email,$destinations);
 
 		return "1";
 	}
