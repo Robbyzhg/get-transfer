@@ -109,9 +109,21 @@ class functions {
 		}
 	}
 
-	public function get_destinations()
+	public function get_destinations($previous = null)
 	{
-		return ["Kuta","Legian","Seminyak","Kerobokan","Jimbaran","Nusa Dua","Uluwatu","Canggu","Tanahlot","Ubud","Tegalalang","Kintamani","Candidasa","Amed","Lovina","Pemuteran","Gilimanuk","Tabanan","Negara","DPS","Sanur"];
+		$destinations = ["Kuta","Legian","Seminyak","Kerobokan","Jimbaran","Nusa Dua","Uluwatu","Canggu","Tanahlot","Ubud","Tegalalang","Kintamani","Candidasa","Amed","Lovina","Pemuteran","Gilimanuk","Tabanan","Negara","DPS","Sanur"];
+		if ( $previous == null ) {
+			return $destinations;
+		} else {
+			$result = [];
+			foreach ($destinations as $destination) {
+				if ( $destination != $previous ) {
+					array_push($result, $destination);
+				}
+			}
+
+			return $result;
+		}
 	}
 
 	public function get_destination_cost($destination)

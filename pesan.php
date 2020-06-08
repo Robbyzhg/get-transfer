@@ -26,6 +26,18 @@ if (isset($_POST['submit'])) {
 			
 			<form method="post" action="" id="frmorder">
 				<div class="form-group">
+					<label><b>Pickup :</b></label>
+					<select class="form-control" name="jemput" id="cmbpickup">
+						<option value="0">--- Choose One ---</option>
+					</select>
+				</div>
+				<div class="form-group">
+					<label><b>Destination :</b></label>
+					<select class="form-control" name="antar" id="cmbdestination" disabled>
+						<option value="0">--- Choose One ---</option>
+					</select>
+				</div>
+				<div class="form-group">
 					<label><b>Notes for Driver :</b></label>
 					<input class="form-control" required type="text" name="note" id="txtcatatan">
 				</div>
