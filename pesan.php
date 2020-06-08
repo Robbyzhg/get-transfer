@@ -12,7 +12,6 @@ if (isset($_POST['submit'])) {
 }
 
 
-
 ?>
 <br><br>
 <div class="container mb-5">
@@ -29,6 +28,9 @@ if (isset($_POST['submit'])) {
 					<label><b>Pickup :</b></label>
 					<select class="form-control" name="jemput" id="cmbpickup">
 						<option value="0">--- Choose One ---</option>
+						<?php foreach ($destinations as $destination): ?>
+							<option value="<?= $destination ?>"><?= $destination ?></option>
+						<?php endforeach ?>
 					</select>
 				</div>
 				<div class="form-group">
@@ -119,40 +121,96 @@ if (isset($_POST['submit'])) {
 	// 	});
 	// }
 
-	var peta;
+	var pickup = null;
+	var destination = null;
+
 	function mapInitialize() 
 	{
 		var propertiPeta = {
 			center:new google.maps.LatLng(-8.4102025,115.0926971),
-			zoom:10,
+			zoom:9,
 			mapTypeId:google.maps.MapTypeId.ROADMAP
 		};
 
-		peta = new google.maps.Map(document.getElementById("map-box"), propertiPeta);
+		var peta = new google.maps.Map(document.getElementById("map-box"), propertiPeta);
 
-		new google.maps.Marker({
-			position: new google.maps.LatLng("-8.746928", "115.165099"),
-			map: peta,
-			icon: "assets/img/titikjemput.png"
-		});
-
-		if ( selectedCoordinate.length > 0 ) {
-			$.each(selectedCoordinate, function(index){
-				var coordinate = selectedCoordinate[index].split(",");
-				new google.maps.Marker({
-					position: new google.maps.LatLng(coordinate[0],coordinate[1]),
-					map: peta,
-					icon: "assets/img/titikantar.png"
-				});
+		if ( pickup != null ) {
+			var coordinate = pickup.split(",");
+			new google.maps.Marker({
+				position: new google.maps.LatLng(coordinate[0],coordinate[1]),
+				map: peta,
+				icon: "assets/img/titikjemput.png"
 			});
 		}
+
+		if ( destination != null ) {
+			var coordinate = destination.split(",");
+			new google.maps.Marker({
+				position: new google.maps.LatLng(coordinate[0],coordinate[1]),
+				map: peta,
+				icon: "assets/img/titikantar.png"
+			});
+		}
+		// new google.maps.Marker({
+		// 	position: new google.maps.LatLng("-8.746928", "115.165099"),
+		// 	map: peta,
+		// 	icon: "assets/img/titikjemput.png"
+		// });
+
+		// if ( selectedCoordinate.length > 0 ) {
+		// 	$.each(selectedCoordinate, function(index){
+		// 		var coordinate = selectedCoordinate[index].split(",");
+		// 		new google.maps.Marker({
+		// 			position: new google.maps.LatLng(coordinate[0],coordinate[1]),
+		// 			map: peta,
+		// 			icon: "assets/img/titikantar.png"
+		// 		});
+		// 	});
+		// }
 	}
+	mapInitialize()
+
+	$("#cmbpickup").on("change",function(){
+		$("#cmbdestination").html("");
+		$("#cmbdestination").append(new Option("--- Choose One ---","0"))
+		var previous = $(this).val();
+		if ( previous == "0" ) {
+			$("#cmbdestination option").eq(0).prop("selected",true);
+			$("#cmbdestination").attr("disabled","disabled");
+			pickup = null;
+			destination = null;
+			mapInitialize();
+		} else {
+			$.ajax({
+				url : "<?= $myfunc->baseurl ?>config/request.php",
+				data : { previous : previous, get_destination : true },
+				type : "post",
+				dataType : "json",
+				success : function(result) {
+					$("#cmbdestination").removeAttr("disabled");
+				    $.each(result, function(val, txt) {
+				       $('#cmbdestination').append(new Option(txt, txt));
+				    });
+
+				    $.ajax({
+						url : "<?= $myfunc->baseurl ?>config/request.php",
+						data : { destination : previous, get_destination_coordinate : true },
+						type : "post",
+						dataType : "text",
+						success : function(result) {
+							pickup = result;
+							mapInitialize();
+						}
+					});
+				}
+			});
+		}
+	});
 
 	// function markOnMap(coordinate)
 	// {
 	// 	selectedCoordinate.push(coordinate);
 	// }
-	mapInitialize()
 
 	// $("#btnAddDestination").on("click",function(){
 	// 	$("#destinationmodal").modal("show");
