@@ -19,10 +19,10 @@ if (isset($_POST['submit'])) {
 	<div class="row">
 		<div class="col-md-6">
 
-			<button class="btn btn-success rounded-pill mb-3" id="btnAddDestination" data-toggle="modal" data-target="#destinationmodal">Add more Destinations</button>
+			<!-- <button class="btn btn-success rounded-pill mb-3" id="btnAddDestination" data-toggle="modal" data-target="#destinationmodal">Add more Destinations</button> -->
 			
-			<div id="destinationsarea">
-			</div>
+			<!-- <div id="destinationsarea">
+			</div> -->
 			
 			<form method="post" action="" id="frmorder">
 				<div class="form-group">
@@ -50,7 +50,7 @@ if (isset($_POST['submit'])) {
 </div>
 
 
-<div class="modal fade" id="destinationmodal" tabindex="-1" role="dialog" aria-hidden="true">
+<!-- <div class="modal fade" id="destinationmodal" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
@@ -86,7 +86,7 @@ if (isset($_POST['submit'])) {
       </div>
     </div>
   </div>
-</div>
+</div> -->
 
 
 <script>
