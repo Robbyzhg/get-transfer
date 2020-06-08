@@ -2,6 +2,9 @@
 
 include 'templates/header.php';
 
+
+
+
 $destinations = $myfunc->get_destinations();
 
 if (isset($_POST['submit'])) {
@@ -16,36 +19,18 @@ if (isset($_POST['submit'])) {
 	<div class="row">
 		<div class="col-md-6">
 
-			<button class="btn btn-success rounded-pill mb-3" id="btnAddDestination">
-				<?php if ( $_SESSION["lang"] == "id" ): ?>
-					Tambah Titik Tujuan
-				<?php else: ?>
-					Add more Destinations
-				<?php endif ?>
-			</button>
+			<button class="btn btn-success rounded-pill mb-3" id="btnAddDestination" data-toggle="modal" data-target="#destinationmodal">Add more Destinations</button>
 			
 			<div id="destinationsarea">
 			</div>
 			
 			<form method="post" action="" id="frmorder">
 				<div class="form-group">
-					<label><b>
-						<?php if ( $_SESSION["lang"] == "id" ): ?>
-							Catatan untuk Driver : 
-						<?php else: ?>
-							Notes for Driver :
-						<?php endif ?>
-					</b></label>
+					<label><b>Notes for Driver :</b></label>
 					<input class="form-control" required type="text" name="note" id="txtcatatan">
 				</div>
 				<div class="form-group">
-					<label><b>
-						<?php if ( $_SESSION["lang"] == "id" ): ?>
-							No Telpon : 
-						<?php else: ?>
-							Phone Number :
-						<?php endif ?>
-					</b></label>
+					<label><b>Phone Number :</b></label>
 					<input class="form-control" required type="text" name="notelp" id="txtnohp">
 				</div>
 				<div class="form-group">
@@ -54,13 +39,7 @@ if (isset($_POST['submit'])) {
 				</div>
 				<div class="form-group">
 					<button class="btn btn-outline-success rounded-pill form-control" type="submit"
-					name="submit">
-						<?php if ( $_SESSION["lang"] == "id" ): ?>
-							Pesan Sekarang
-						<?php else: ?>
-							Order Now
-						<?php endif ?>
-					</button>
+					name="submit">Order Now</button>
 				</div>
 			</form>
 		</div>
@@ -70,17 +49,12 @@ if (isset($_POST['submit'])) {
 	</div>
 </div>
 
+
 <div class="modal fade" id="destinationmodal" tabindex="-1" role="dialog" aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">
-        	<?php if ( $_SESSION["lang"] == "id" ): ?>
-	        	Tambah Titik Tujuan
-			<?php else: ?>
-				Add new Destinations
-			<?php endif ?>
-        </h5>
+        <h5 class="modal-title" id="exampleModalLabel">Add new Destinations</h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
@@ -88,67 +62,32 @@ if (isset($_POST['submit'])) {
       <div class="modal-body">
         <form id="frmAddDestination">
         	<div class="form-group">
-		        <label>
-		        	<?php if ( $_SESSION["lang"] == "id" ): ?>
-			        	Titik Tujuan
-					<?php else: ?>
-						Destination
-					<?php endif ?>
-		        </label>
+		        <label>Destination</label>
 		        <select class="form-control" name="destination" id="cmbdestination">
-		        	<option value="0">
-		        		<?php if ( $_SESSION["lang"] == "id" ): ?>
-			        		--- Pilih Satu ---
-						<?php else: ?>
-							--- Choose One ---
-						<?php endif ?>
-		        	</option>
+		        	<option value="0">--- Choose One ---</option>
 		        	<?php foreach ($destinations as $destination): ?>
 		        		<option value="<?= $destination ?>"><?= $destination ?></option>
 		        	<?php endforeach ?>
 		        </select>
         	</div>
         	<div class="form-group">
-        		<label>
-        			<?php if ( $_SESSION["lang"] == "id" ): ?>
-	        			Tanggal Berangkat
-					<?php else: ?>
-						Date of Departure
-					<?php endif ?>
-        		</label>
+        		<label>Date of Departure</label>
         		<input class="form-control" required type="date" name="tglberangkat" id="txtdate">
         	</div>
         	<div class="form-group">
-        		<label>
-        			<?php if ( $_SESSION["lang"] == "id" ): ?>
-	        			Waktu Berangkat
-					<?php else: ?>
-						Time of Departure
-					<?php endif ?>
-        		</label>
+        		<label>Time of Departure</label>
         		<input class="form-control" required type="time" name="waktuberangkat" id="txttime">
         	</div>
       </div>
       <div class="modal-footer">
-	        <button type="button" class="btn btn-secondary" data-dismiss="modal">
-	        	<?php if ( $_SESSION["lang"] == "id" ): ?>
-		        	Tutup
-				<?php else: ?>
-					Close
-				<?php endif ?>
-	        </button>
-	        <button type="submit" class="btn btn-success">
-	        	<?php if ( $_SESSION["lang"] == "id" ): ?>
-		        	Simpan
-				<?php else: ?>
-					Save
-				<?php endif ?>
-	        </button>
+	        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+	        <button type="submit" class="btn btn-success">Save</button>
         </form>
       </div>
     </div>
   </div>
 </div>
+
 
 <script>
 	var selectedDestinations = [];
@@ -173,7 +112,7 @@ if (isset($_POST['submit'])) {
 	{
 		var propertiPeta = {
 			center:new google.maps.LatLng(-8.4102025,115.0926971),
-			zoom:9,
+			zoom:10,
 			mapTypeId:google.maps.MapTypeId.ROADMAP
 		};
 
@@ -301,3 +240,14 @@ if (isset($_POST['submit'])) {
 		}
 	});
 </script>
+
+
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+	<link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
+	<script src="assets/js/bootstrap.min.js"></script>
+	<script src="assets/js/bootstrap.js"></script>
+	<script src="assets/js/bootstrap.min.js.map"></script>
+	<script src="http://maps.googleapis.com/maps/api/js?key=AIzaSyC-52V-kcWKfmd9Bd29vqMZ1HM1ccAZjg4&v=3.exp&sensor=true&libraries=places"></script>
+	<script src="//ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js" type="text/javascript"></script>

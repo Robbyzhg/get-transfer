@@ -6,7 +6,7 @@
     <link rel="stylesheet" type="text/css" href="assets/css/bootstrap.min.css">
   </body>
   <footer class="footer footer-expand-lg bg-footer">
-    <h3>Ikuti Kami</h3>
+    <h3>Follow Us</h3>
 
     <div class="row justify-content-center">
         <div class="col-lg follow justify-content-center d-flex">
