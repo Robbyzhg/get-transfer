@@ -663,6 +663,8 @@ class functions {
 				"Kuta" => "76.65"
 			];
 		}
+
+		return $data[$destination];
 	}
 
 	public function get_destination_coordinate($destination)

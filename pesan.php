@@ -126,6 +126,7 @@ if (isset($_POST['submit'])) {
 
 	var pickup = null;
 	var destination = null;
+	var price = 0;
 
 	function mapInitialize() 
 	{
@@ -176,11 +177,12 @@ if (isset($_POST['submit'])) {
 	$("#cmbpickup").on("change",function(){
 		$("#cmbdestination").html("");
 		$("#cmbdestination").append(new Option("--- Choose One ---","0"))
+		$("#lblprice").html("0");
+		price = 0;
 		var previous = $(this).val();
 		if ( previous == "0" ) {
 			$("#cmbdestination option").eq(0).prop("selected",true);
 			$("#cmbdestination").attr("disabled","disabled");
-			$("#lblprice").html("0");
 			pickup = null;
 			destination = null;
 			mapInitialize();
@@ -215,6 +217,7 @@ if (isset($_POST['submit'])) {
 		var previous = $(this).val();
 		if ( previous == "0" ) {
 			$("#lblprice").html("0");
+			price = 0;
 			destination = null;
 			mapInitialize();
 		} else {
@@ -226,6 +229,19 @@ if (isset($_POST['submit'])) {
 				success : function(result) {
 					destination = result;
 					mapInitialize();
+
+					var pickupname = $("#cmbpickup").val();
+					var destinationname = $("#cmbdestination").val();
+					$.ajax({
+						url : "<?= $myfunc->baseurl ?>config/request.php",
+						data : { pickup : pickupname, destination : destinationname, get_destination_cost : true },
+						type : "post",
+						dataType : "text",
+						success : function(result) {
+							$("#lblprice").html(result);
+							price = result;
+						}
+					});
 				}
 			});
 		}
