@@ -706,13 +706,12 @@ class functions {
 		$note = $data['note'];
 		$no_telp = $data['no_telp'];
 		$email = $data['email'];
-
 		$insert = $this->exe("INSERT INTO pesan VALUES ('$id_pesan','$jemput','$antar','$waktu','$price','$note','$no_telp','$email')");
 		if ( $insert > 0 ) {
 			$this->notif("SUCCESS ORDER!","success");
 		} else {
 			$this->notif("FAIL TO ORDER!","danger");
-			return "0";
+			return mysqli_error($this->conn);
 		}
 
 

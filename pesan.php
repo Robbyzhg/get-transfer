@@ -265,17 +265,17 @@ if (isset($_POST['submit'])) {
 			var jemput = $("#cmbpickup").val();
 			var antar = $("#cmbdestination").val();
 			var waktu = $("#txtdate").val() + " " + $("#txttime").val();
-			var price = price;
+			// var price = price;
 			var note = $("#txtcatatan").val();
 			var no_telp = $("#txtnohp").val();
-			var email = $("#email").val();
+			var email = $("#txtemail").val();
 			$.ajax({
-				url : "<?= $myfunc->baseurl ?>pesan.php",
+				url : "<?= $myfunc->baseurl ?>config/request.php",
 				data : { jemput: jemput, antar: antar, waktu: waktu, price: price, note: note, no_telp: no_telp, email: email, order:true },
 				type : "post",
 				dataType : "text",
 				success: function(result) {
-					window.location = "<?= $myfunc->baseurl ?>wait.php";
+					// window.location = "<?= $myfunc->baseurl ?>wait.php";
 				}
 			});
 		}
