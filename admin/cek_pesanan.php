@@ -24,6 +24,10 @@ if (isset($_GET['selesai'])) {
 				<table class="table">
 					<thead class="bg-success text-white">
 						<tr>
+							<td>Titik Jemput</td>
+							<td>Titik Antar</td>
+							<td>Waktu</td>
+							<td>Tarif</td>
 							<td>Catatan</td>
 							<td>No Telpon</td>
 							<td>Email</td>
@@ -33,6 +37,10 @@ if (isset($_GET['selesai'])) {
 					<tbody>
 						<?php foreach ($get as $row): ?>
 							 <tr>
+							 	<td><?= $row['jemput'] ?></td>
+							 	<td><?= $row['antar'] ?></td>
+							 	<td><?= $row['waktu'] ?></td>
+							 	<td><?= $row['price'] ?></td>
 							 	<td><?= $row['note']; ?></td>
 							 	<td><?= $row['no_telp']; ?></td>
 							 	<td><?= $row['email']; ?></td>
