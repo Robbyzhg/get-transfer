@@ -275,7 +275,7 @@ if (isset($_POST['submit'])) {
 				type : "post",
 				dataType : "text",
 				success: function(result) {
-					// window.location = "<?= $myfunc->baseurl ?>wait.php";
+					window.location = "<?= $myfunc->baseurl ?>wait.php";
 				}
 			});
 		}
