@@ -724,7 +724,12 @@ class functions {
 		// 	$this->exe("INSERT INTO pesandetail VALUES ('$id_detail','$id_pesan','$antar','$waktu','$price')");
 		// }
 
-		// $this->send_mail($email,$destinations);
+		$order_details = [
+			"pickup" => $jemput,
+			"destination" => $antar,
+			"price" => $price
+		];
+		$this->send_mail($email,$order_details);
 
 		return "1";
 	}
@@ -1131,28 +1136,18 @@ class functions {
             	<tr><td>&nbsp;</td></tr>
 	            <tr>
 	    			<table border="1" width="100%" cellspacing="0">
-	    				<thead>
-	    					<tr>
-	    						<th width="50">#</th>
-	    						<th>Destination</th>
-	    						<th>Time</th>
-	    						<th>Price</th>
-	    					</tr>
-	    				</thead>
-	    				<tbody>';
-		$i = 1;	    				
-	    foreach ($order_details as $order) {
-	    	$content .= '
-	    		<tr>
-					<td>'. $i++ .'</td>
-					<td>'. $order['destination'] .'</td>
-					<td>'. $order['date'] . " " . $order['time'] .'</td>
-					<td>'. $order['cost'] .'</td>
-				</tr>
-	    	';
-	    }
-
-	    $content .= '</tbody>
+	    				<tr>
+	    					<td>Pickup</td>
+	    					<td>'. $order_details['pickup'] .'</td>
+	    				</tr>
+	    				<tr>
+	    					<td>Destination</td>
+	    					<td>'. $order_details['destination'] .'</td>
+	    				</tr>
+	    				<tr>
+	    					<td>Price</td>
+	    					<td>$'. $order_details['price'] .'</td>
+	    				</tr>
 	    			</table>
 	            </tr>
 	            <tr style="background: #fff;">
