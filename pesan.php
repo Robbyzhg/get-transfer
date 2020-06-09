@@ -40,6 +40,14 @@ if (isset($_POST['submit'])) {
 					</select>
 				</div>
 				<div class="form-group">
+	        		<label>Date of Departure</label>
+	        		<input class="form-control" required type="date" name="tglberangkat" id="txtdate">
+	        	</div>
+	        	<div class="form-group">
+	        		<label>Time of Departure</label>
+	        		<input class="form-control" required type="time" name="waktuberangkat" id="txttime">
+	        	</div>
+				<div class="form-group">
 					<label><b>Notes for Driver :</b></label>
 					<input class="form-control" required type="text" name="note" id="txtcatatan">
 				</div>
@@ -244,6 +252,19 @@ if (isset($_POST['submit'])) {
 					});
 				}
 			});
+		}
+	});
+
+	$("#frmorder").on("submit",function(e){
+		e.preventDefault();
+		if ( pickup == null ) {
+			alert("Please choose pickup point");
+		} else if ( destination == null ) {
+			alert("Please choose destination point");
+		} else {
+			var jemput = $("#cmbpickup").val();
+			var antar = $("#cmbdestination").val();
+			var waktu = $("#txt")
 		}
 	});
 
