@@ -12,4 +12,4 @@ if ( isset($_POST['get_destination_cost']) ) {
 	echo $myfunc->get_destination_coordinate($_POST['destination']);
 } elseif ( isset($_POST['get_destination']) ) {
 	echo json_encode($myfunc->get_destinations($_POST['previous']));
-}
+} 

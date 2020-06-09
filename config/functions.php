@@ -111,7 +111,7 @@ class functions {
 
 	public function get_destinations($previous = null)
 	{
-		$destinations = ["Airport","Kuta","Legian","Seminyak","Kerobokan","Jimbaran","Nusa Dua","Uluwatu","Canggu","Tanahlot","Ubud","Tegalalang","Kintamani","Candidasa","Amed","Lovina","Pemuteran","Gilimanuk","Tabanan","Negara","DPS","Sanur"];
+		$destinations = ["Airport","Legian","Seminyak","Kerobokan","Jimbaran","Nusa Dua","Uluwatu","Canggu","Tanahlot","Ubud","Payangan","Tegalalang","Kintamani","Candidasa","Amed","Lovina","Pemuteran","Gilimanuk","Tabanan","Negara","Kuta"];
 		if ( $previous == null ) {
 			return $destinations;
 		} else {
@@ -668,7 +668,7 @@ class functions {
 	public function get_destination_coordinate($destination)
 	{
 		$data = [
-			"Kuta" => "-8.7263223,115.1365133",
+			"Airport" => "-8.748325,115.1648349",
 			"Legian" => "-8.7043754,115.1629892",
 			"Seminyak" => "-8.6899114,115.1566542",
 			"Kerobokan" => "-8.6522444,115.1541187",
@@ -678,6 +678,7 @@ class functions {
 			"Canggu" => "-8.6425819,115.1269695",
 			"Tanahlot" => "-8.6212118,115.0846145",
 			"Ubud" => "-8.4961096,115.2310197",
+			"Payangan" => "-8.4257655,115.1301082",
 			"Tegalalang" => "-8.4441428,115.2707482",
 			"Kintamani" => "-8.2499984,115.274953",
 			"Candidasa" => "-8.5013214,115.5443327",
@@ -687,8 +688,7 @@ class functions {
 			"Gilimanuk" => "-8.1971895,114.4264948",
 			"Tabanan" => "-8.4392037,114.9259631",
 			"Negara" => "-8.3145408,114.5189401",
-			"DPS" => "-8.7173875,115.1448732",
-			"Sanur" => "-8.6958047,115.2420168"
+			"Kuta" => "-8.7263223,115.1365133"
 		];
 
 		return $data[$destination];

@@ -51,6 +51,9 @@ if (isset($_POST['submit'])) {
 					<label><b>Email : </b></label>
 					<input class="form-control" required type="email" name="email" id="txtemail">
 				</div>
+				<p>
+					Price : $<b id="lblprice">0</b>
+				</p>
 				<div class="form-group">
 					<button class="btn btn-outline-success rounded-pill form-control" type="submit"
 					name="submit">Order Now</button>
@@ -177,6 +180,7 @@ if (isset($_POST['submit'])) {
 		if ( previous == "0" ) {
 			$("#cmbdestination option").eq(0).prop("selected",true);
 			$("#cmbdestination").attr("disabled","disabled");
+			$("#lblprice").html("0");
 			pickup = null;
 			destination = null;
 			mapInitialize();
@@ -210,6 +214,7 @@ if (isset($_POST['submit'])) {
 	$("#cmbdestination").on("change",function(){
 		var previous = $(this).val();
 		if ( previous == "0" ) {
+			$("#lblprice").html("0");
 			destination = null;
 			mapInitialize();
 		} else {
