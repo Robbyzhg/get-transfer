@@ -699,12 +699,15 @@ class functions {
 	public function order_now($data)
 	{
 		$id_pesan = $this->get_last_id("pesan","id_pesan") + 1;
+		$jemput = $data['jemput'];
+		$antar = $data['antar'];
+		$waktu = $data['waktu'];
+		$price = $data['price'];
 		$note = $data['note'];
 		$no_telp = $data['no_telp'];
 		$email = $data['email'];
-		$destinations = $data['destinations'];
 
-		$insert = $this->exe("INSERT INTO pesan VALUES ('$id_pesan','$note','$no_telp','$email')");
+		$insert = $this->exe("INSERT INTO pesan VALUES ('$id_pesan','$jemput','$antar','$waktu','$price','$note','$no_telp','$email')");
 		if ( $insert > 0 ) {
 			$this->notif("SUCCESS ORDER!","success");
 		} else {
@@ -713,13 +716,13 @@ class functions {
 		}
 
 
-		foreach ($destinations as $destination) {
-			$id_detail = $this->get_last_id("pesandetail","id_detail") + 1;
-			$antar = $destination['destination'];
-			$waktu = $destination['date'] . " " . $destination['time'];
-			$price = $destination['cost'];
-			$this->exe("INSERT INTO pesandetail VALUES ('$id_detail','$id_pesan','$antar','$waktu','$price')");
-		}
+		// foreach ($destinations as $destination) {
+		// 	$id_detail = $this->get_last_id("pesandetail","id_detail") + 1;
+		// 	$antar = $destination['destination'];
+		// 	$waktu = $destination['date'] . " " . $destination['time'];
+		// 	$price = $destination['cost'];
+		// 	$this->exe("INSERT INTO pesandetail VALUES ('$id_detail','$id_pesan','$antar','$waktu','$price')");
+		// }
 
 		// $this->send_mail($email,$destinations);
 

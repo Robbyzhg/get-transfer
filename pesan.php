@@ -264,7 +264,20 @@ if (isset($_POST['submit'])) {
 		} else {
 			var jemput = $("#cmbpickup").val();
 			var antar = $("#cmbdestination").val();
-			var waktu = $("#txt")
+			var waktu = $("#txtdate").val() + " " + $("#txttime").val();
+			var price = price;
+			var note = $("#txtcatatan").val();
+			var no_telp = $("#txtnohp").val();
+			var email = $("#email").val();
+			$.ajax({
+				url : "<?= $myfunc->baseurl ?>pesan.php",
+				data : { jemput: jemput, antar: antar, waktu: waktu, price: price, note: note, no_telp: no_telp, email: email, order:true },
+				type : "post",
+				dataType : "text",
+				success: function(result) {
+					window.location = "<?= $myfunc->baseurl ?>wait.php";
+				}
+			});
 		}
 	});
 
