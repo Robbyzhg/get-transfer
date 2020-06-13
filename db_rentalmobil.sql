@@ -1,14 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 4.6.6deb5
 -- https://www.phpmyadmin.net/
 --
--- Host: localhost
--- Generation Time: May 18, 2020 at 10:51 AM
--- Server version: 10.4.11-MariaDB
--- PHP Version: 7.4.4
+-- Host: localhost:3306
+-- Generation Time: Jun 10, 2020 at 03:17 AM
+-- Server version: 5.7.30-0ubuntu0.18.04.1
+-- PHP Version: 7.0.33-27+ubuntu18.04.1+deb.sury.org+1
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
 SET time_zone = "+00:00";
 
 
@@ -40,10 +39,7 @@ CREATE TABLE `mobil` (
 --
 
 INSERT INTO `mobil` (`id_mobil`, `merk`, `jenis`, `plat`, `gambar`) VALUES
-(4, 'Toyota', 'Inova', 'BP 1122 XD', 'Thumnail Innova.jpg'),
-(5, 'Toyota', 'Inova', 'BP 1122 XD', 'Thumnail Innova.jpg'),
-(6, 'Toyota', 'Inova', 'BP 1122 XD', 'Thumnail Innova.jpg'),
-(7, '', '', '', '');
+(4, 'Toyota', 'Inova', 'BP 1122 XD', 'Thumnail Innova.jpg');
 
 -- --------------------------------------------------------
 
@@ -53,42 +49,21 @@ INSERT INTO `mobil` (`id_mobil`, `merk`, `jenis`, `plat`, `gambar`) VALUES
 
 CREATE TABLE `pesan` (
   `id_pesan` int(11) NOT NULL,
+  `jemput` varchar(255) NOT NULL,
+  `antar` varchar(255) NOT NULL,
+  `waktu` datetime NOT NULL,
+  `price` decimal(10,0) NOT NULL,
   `note` varchar(100) NOT NULL,
   `no_telp` varchar(14) NOT NULL,
   `email` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
 
--- --------------------------------------------------------
-
 --
--- Table structure for table `pesandetail`
+-- Dumping data for table `pesan`
 --
 
-CREATE TABLE `pesandetail` (
-  `id_detail` int(11) NOT NULL,
-  `id_pesan` int(11) NOT NULL,
-  `antar` varchar(255) DEFAULT NULL,
-  `waktu` datetime(6) DEFAULT NULL,
-  `price` varchar(255) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 ROW_FORMAT=DYNAMIC;
-
--- --------------------------------------------------------
-
---
--- Table structure for table `promo`
---
-
-CREATE TABLE `promo` (
-  `id_promo` int(11) NOT NULL,
-  `gambar_promo` text NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `promo`
---
-
-INSERT INTO `promo` (`id_promo`, `gambar_promo`) VALUES
-(5, 'voucher-go-jek-gratis-feb-2020.png');
+INSERT INTO `pesan` (`id_pesan`, `jemput`, `antar`, `waktu`, `price`, `note`, `no_telp`, `email`) VALUES
+(1, 'Airport', 'Kerobokan', '2020-01-07 13:15:00', '22', 'Note testing', '087791716102', 'd9firmansyah@gmail.com');
 
 -- --------------------------------------------------------
 
@@ -108,8 +83,8 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id_user`, `username`, `password`, `level`) VALUES
-(6, 'admin', 'admin123', 'admin'),
-(7, 'user', 'user123', 'user');
+(6, 'admin', 'admin', 'admin'),
+(7, 'user', 'user', 'user');
 
 --
 -- Indexes for dumped tables
@@ -128,19 +103,6 @@ ALTER TABLE `pesan`
   ADD PRIMARY KEY (`id_pesan`) USING BTREE;
 
 --
--- Indexes for table `pesandetail`
---
-ALTER TABLE `pesandetail`
-  ADD PRIMARY KEY (`id_detail`) USING BTREE,
-  ADD KEY `id_pesan` (`id_pesan`) USING BTREE;
-
---
--- Indexes for table `promo`
---
-ALTER TABLE `promo`
-  ADD PRIMARY KEY (`id_promo`);
-
---
 -- Indexes for table `users`
 --
 ALTER TABLE `users`
@@ -154,43 +116,17 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT for table `mobil`
 --
 ALTER TABLE `mobil`
-  MODIFY `id_mobil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
+  MODIFY `id_mobil` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 --
 -- AUTO_INCREMENT for table `pesan`
 --
 ALTER TABLE `pesan`
-  MODIFY `id_pesan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-
---
--- AUTO_INCREMENT for table `pesandetail`
---
-ALTER TABLE `pesandetail`
-  MODIFY `id_detail` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
-
---
--- AUTO_INCREMENT for table `promo`
---
-ALTER TABLE `promo`
-  MODIFY `id_promo` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
-
+  MODIFY `id_pesan` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 --
 -- AUTO_INCREMENT for table `users`
 --
 ALTER TABLE `users`
   MODIFY `id_user` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `pesandetail`
---
-ALTER TABLE `pesandetail`
-  ADD CONSTRAINT `pesandetail_ibfk_1` FOREIGN KEY (`id_pesan`) REFERENCES `pesan` (`id_pesan`) ON DELETE CASCADE ON UPDATE CASCADE;
-COMMIT;
-
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
