@@ -111,7 +111,7 @@ class functions {
 
 	public function get_destinations($previous = null)
 	{
-		$destinations = ["Airport","Kuta","Legian","Seminyak","Kerobokan","Jimbaran","Nusa Dua","Uluwatu","Canggu","Tanahlot","Ubud","Tegalalang","Kintamani","Candidasa","Amed","Lovina","Pemuteran","Gilimanuk","Tabanan","Negara","DPS","Sanur"];
+		$destinations = ["Airport","Legian","Seminyak","Kerobokan","Jimbaran","Nusa Dua","Uluwatu","Canggu","Tanahlot","Ubud","Payangan","Tegalalang","Kintamani","Candidasa","Amed","Lovina","Pemuteran","Gilimanuk","Tabanan","Negara","Kuta"];
 		if ( $previous == null ) {
 			return $destinations;
 		} else {
@@ -663,12 +663,14 @@ class functions {
 				"Kuta" => "76.65"
 			];
 		}
+
+		return $data[$destination];
 	}
 
 	public function get_destination_coordinate($destination)
 	{
 		$data = [
-			"Kuta" => "-8.7263223,115.1365133",
+			"Airport" => "-8.748325,115.1648349",
 			"Legian" => "-8.7043754,115.1629892",
 			"Seminyak" => "-8.6899114,115.1566542",
 			"Kerobokan" => "-8.6522444,115.1541187",
@@ -678,6 +680,7 @@ class functions {
 			"Canggu" => "-8.6425819,115.1269695",
 			"Tanahlot" => "-8.6212118,115.0846145",
 			"Ubud" => "-8.4961096,115.2310197",
+			"Payangan" => "-8.4257655,115.1301082",
 			"Tegalalang" => "-8.4441428,115.2707482",
 			"Kintamani" => "-8.2499984,115.274953",
 			"Candidasa" => "-8.5013214,115.5443327",
@@ -687,8 +690,7 @@ class functions {
 			"Gilimanuk" => "-8.1971895,114.4264948",
 			"Tabanan" => "-8.4392037,114.9259631",
 			"Negara" => "-8.3145408,114.5189401",
-			"DPS" => "-8.7173875,115.1448732",
-			"Sanur" => "-8.6958047,115.2420168"
+			"Kuta" => "-8.7263223,115.1365133"
 		];
 
 		return $data[$destination];
@@ -697,29 +699,36 @@ class functions {
 	public function order_now($data)
 	{
 		$id_pesan = $this->get_last_id("pesan","id_pesan") + 1;
+		$jemput = $data['jemput'];
+		$antar = $data['antar'];
+		$waktu = $data['waktu'];
+		$price = $data['price'];
 		$note = $data['note'];
 		$no_telp = $data['no_telp'];
 		$email = $data['email'];
-		$destinations = $data['destinations'];
-
-		$insert = $this->exe("INSERT INTO pesan VALUES ('$id_pesan','$note','$no_telp','$email')");
+		$insert = $this->exe("INSERT INTO pesan VALUES ('$id_pesan','$jemput','$antar','$waktu','$price','$note','$no_telp','$email')");
 		if ( $insert > 0 ) {
 			$this->notif("SUCCESS ORDER!","success");
 		} else {
 			$this->notif("FAIL TO ORDER!","danger");
-			return "0";
+			return mysqli_error($this->conn);
 		}
 
 
-		foreach ($destinations as $destination) {
-			$id_detail = $this->get_last_id("pesandetail","id_detail") + 1;
-			$antar = $destination['destination'];
-			$waktu = $destination['date'] . " " . $destination['time'];
-			$price = $destination['cost'];
-			$this->exe("INSERT INTO pesandetail VALUES ('$id_detail','$id_pesan','$antar','$waktu','$price')");
-		}
+		// foreach ($destinations as $destination) {
+		// 	$id_detail = $this->get_last_id("pesandetail","id_detail") + 1;
+		// 	$antar = $destination['destination'];
+		// 	$waktu = $destination['date'] . " " . $destination['time'];
+		// 	$price = $destination['cost'];
+		// 	$this->exe("INSERT INTO pesandetail VALUES ('$id_detail','$id_pesan','$antar','$waktu','$price')");
+		// }
 
-		// $this->send_mail($email,$destinations);
+		$order_details = [
+			"pickup" => $jemput,
+			"destination" => $antar,
+			"price" => $price
+		];
+		$this->send_mail($email,$order_details);
 
 		return "1";
 	}
@@ -1126,28 +1135,18 @@ class functions {
             	<tr><td>&nbsp;</td></tr>
 	            <tr>
 	    			<table border="1" width="100%" cellspacing="0">
-	    				<thead>
-	    					<tr>
-	    						<th width="50">#</th>
-	    						<th>Destination</th>
-	    						<th>Time</th>
-	    						<th>Price</th>
-	    					</tr>
-	    				</thead>
-	    				<tbody>';
-		$i = 1;	    				
-	    foreach ($order_details as $order) {
-	    	$content .= '
-	    		<tr>
-					<td>'. $i++ .'</td>
-					<td>'. $order['destination'] .'</td>
-					<td>'. $order['date'] . " " . $order['time'] .'</td>
-					<td>'. $order['cost'] .'</td>
-				</tr>
-	    	';
-	    }
-
-	    $content .= '</tbody>
+	    				<tr>
+	    					<td>Pickup</td>
+	    					<td>'. $order_details['pickup'] .'</td>
+	    				</tr>
+	    				<tr>
+	    					<td>Destination</td>
+	    					<td>'. $order_details['destination'] .'</td>
+	    				</tr>
+	    				<tr>
+	    					<td>Price</td>
+	    					<td>$'. $order_details['price'] .'</td>
+	    				</tr>
 	    			</table>
 	            </tr>
 	            <tr style="background: #fff;">

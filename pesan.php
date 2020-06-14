@@ -40,6 +40,14 @@ if (isset($_POST['submit'])) {
 					</select>
 				</div>
 				<div class="form-group">
+	        		<label>Date of Departure</label>
+	        		<input class="form-control" required type="date" name="tglberangkat" id="txtdate">
+	        	</div>
+	        	<div class="form-group">
+	        		<label>Time of Departure</label>
+	        		<input class="form-control" required type="time" name="waktuberangkat" id="txttime">
+	        	</div>
+				<div class="form-group">
 					<label><b>Notes for Driver :</b></label>
 					<input class="form-control" required type="text" name="note" id="txtcatatan">
 				</div>
@@ -51,6 +59,9 @@ if (isset($_POST['submit'])) {
 					<label><b>Email : </b></label>
 					<input class="form-control" required type="email" name="email" id="txtemail">
 				</div>
+				<p>
+					Price : $<b id="lblprice">0</b>
+				</p>
 				<div class="form-group">
 					<button class="btn btn-outline-success rounded-pill form-control" type="submit"
 					name="submit">Order Now</button>
@@ -123,6 +134,7 @@ if (isset($_POST['submit'])) {
 
 	var pickup = null;
 	var destination = null;
+	var price = 0;
 
 	function mapInitialize() 
 	{
@@ -173,6 +185,8 @@ if (isset($_POST['submit'])) {
 	$("#cmbpickup").on("change",function(){
 		$("#cmbdestination").html("");
 		$("#cmbdestination").append(new Option("--- Choose One ---","0"))
+		$("#lblprice").html("0");
+		price = 0;
 		var previous = $(this).val();
 		if ( previous == "0" ) {
 			$("#cmbdestination option").eq(0).prop("selected",true);
@@ -210,6 +224,8 @@ if (isset($_POST['submit'])) {
 	$("#cmbdestination").on("change",function(){
 		var previous = $(this).val();
 		if ( previous == "0" ) {
+			$("#lblprice").html("0");
+			price = 0;
 			destination = null;
 			mapInitialize();
 		} else {
@@ -221,6 +237,45 @@ if (isset($_POST['submit'])) {
 				success : function(result) {
 					destination = result;
 					mapInitialize();
+
+					var pickupname = $("#cmbpickup").val();
+					var destinationname = $("#cmbdestination").val();
+					$.ajax({
+						url : "<?= $myfunc->baseurl ?>config/request.php",
+						data : { pickup : pickupname, destination : destinationname, get_destination_cost : true },
+						type : "post",
+						dataType : "text",
+						success : function(result) {
+							$("#lblprice").html(result);
+							price = result;
+						}
+					});
+				}
+			});
+		}
+	});
+
+	$("#frmorder").on("submit",function(e){
+		e.preventDefault();
+		if ( pickup == null ) {
+			alert("Please choose pickup point");
+		} else if ( destination == null ) {
+			alert("Please choose destination point");
+		} else {
+			var jemput = $("#cmbpickup").val();
+			var antar = $("#cmbdestination").val();
+			var waktu = $("#txtdate").val() + " " + $("#txttime").val();
+			// var price = price;
+			var note = $("#txtcatatan").val();
+			var no_telp = $("#txtnohp").val();
+			var email = $("#txtemail").val();
+			$.ajax({
+				url : "<?= $myfunc->baseurl ?>config/request.php",
+				data : { jemput: jemput, antar: antar, waktu: waktu, price: price, note: note, no_telp: no_telp, email: email, order:true },
+				type : "post",
+				dataType : "text",
+				success: function(result) {
+					window.location = "<?= $myfunc->baseurl ?>wait.php";
 				}
 			});
 		}
