@@ -62,5 +62,42 @@ include 'templates/header.php';
  			  </div> 
  			</div>
  		</div> 
+ 		<div class="col-4 mt-5">
+ 			<div class="card text-center" style="width: 18rem;">
+ 			  <img src="..." class="card-img-top" alt="...">
+ 			  <div class="card-body">
+ 			    <h5 class="card-title">4 day ( blue lagoon snorkeling the best in bali and tibumane</h5>
+ 			    <p class="card-text">
+ 			    	- Snorkeling at blue lagoon Padang bai <br>
+ 			    	- Tibumana waterfall <br>
+ 			    	- Elephant cave tample <br>
+ 			    	- Back to hotel <br>
+ 			    	<strong>Price is a 600.000 IDR for transport</strong>
+				</p>
+ 			    <a href="#" class="btn btn-outline-success">Choose This</a>
+ 			  </div> 
+ 			</div>
+ 		</div> 
+ 		<div class="col-4 mt-5">
+ 			<div class="card text-center" style="width: 18rem;">
+ 			  <img src="..." class="card-img-top" alt="...">
+ 			  <div class="card-body">
+ 			    <h5 class="card-title">5 day ( instagram tour )</h5>
+ 			    <p class="card-text">
+ 			    	<strong>
+ 			    		Looking for sunrise start from hotel at 4.30am / looking for sunset start from hotel at 09.00am
+					</strong>
+ 			    	- Lempuyang temple / heaven gate <br>
+ 			    	- Lunch <br>
+ 			    	- Tirta gangga / water palace <br>
+ 			    	- Taman ujung temple <br>
+ 			    	- Virgin beach <br>
+ 			    	- Back to hotel
+ 			    	<strong>Price is a 700.000 IDR for transport</strong>
+				</p>
+ 			    <a href="#" class="btn btn-outline-success">Choose This</a>
+ 			  </div> 
+ 			</div>
+ 		</div> 
  	</div>
  </div>

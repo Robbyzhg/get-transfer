@@ -123,7 +123,7 @@
         </div>
         <div class="form-item">
         <p class="pull-left"><a href="register.php"><small>Register</small></a></p>
-        <p class="pull-left ml-3"><a href="pesan.php"><small>Skip Login</small></a></p>
+        <p class="pull-left ml-3"><a href="index.php"><small>Skip Login</small></a></p>
         <input type="submit" class="login pull-right" value="Log In">
         <div class="clear-fix"></div>
         </div>

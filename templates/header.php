@@ -57,7 +57,7 @@
 	          <?php if ( isset($_SESSION["level"]) == "user" ): ?>
 	          	<a href="logout.php" class="btn btn-outline-danger ml-2">Logout</a>
 	          <?php else: ?>
-	          	<a href="register.php" class="btn btn-outline-light">Login</a>
+	          	<a href="login.php" class="btn btn-outline-light">Login</a>
 	          <?php endif ?>
 	        </li>
 	      </ul>
