@@ -1,20 +1,52 @@
-html{
-	scroll-behavior: smooth;
-}
-
-
 /*Navbar*/
 .navbar{
 	position: relative;
 	z-index: 1;
 }
 .navbar-bgtrans{
-	background-color: rgba(63, 255, 0,0.5);
+	background-color:#008A0C;
 }
 .navbar-brand{
 	font-family: 'Viga', sans-serif;
 	font-size: 32px;
 }
+
+.btn-custom { 
+  color: #008A0C; 
+  background-color: #ffffff; 
+  border-color: #ffffff;
+} 
+ 
+.btn-custom:hover, 
+.btn-custom:focus, 
+.btn-custom:active, 
+.btn-custom.active, 
+.open .dropdown-toggle.btn-custom { 
+  color: #ffffff; 
+  background-color: #32A03C; 
+  border-color: #ffffff; 
+}
+.btn-customdua { 
+	color: rgb(255, 255, 255); 
+	background-color: #32A03C; 
+	border-color: #ffffff;
+  } 
+   
+  .btn-customdua:hover, 
+  .btn-customdua:focus, 
+  .btn-customdua:active, 
+  .btn-customdua.active, 
+  .open .dropdown-toggle.btn-customdua { 
+	color: #797979; 
+	background-color: rgb(0, 255, 55); 
+	border-color: #ffffff; 
+  }
+
+
+
+
+
+
 
 /*Jumbrotron*/
 .jumbotron .container{
@@ -22,35 +54,27 @@ html{
 	z-index: 1;
 }
 .jumbotron{
-	background-image: url('../img/banner.png');
+	background: url("../img/banner.png");
 	background-size: cover;
-	height: 440px;
+	height: 330px;
 	position: relative;
+	margin-top: -0px;
+	text-align: center;
 	
 }
 
-.jumbotron::after{
-	content: '';
-	display: block;
-	width: 100%;
-	height: 100%;
-	background-image: linear-gradient(to top, rgba(0,0,0,1), rgba(0.0.0.0))
-	position: absolute;
-	bottom: 0;
 
-}
 
 .jumbotron .display-4{
 	color: white;
-	padding-top: 175px;
-	text-align: center;
-	font-weight: 200;
+	padding-top: 75px;
+	font-weight: 50;
 	text-shadow: 1px 1px 1px rgba(0, 255, 0, 0.3);
-	font-size: 31px;
+	font-size: 25px;
 }
 
 .jumbotron .display-4 span{
-	font-weight: 500;
+	font-weight: 600;
 }
 
 /*Info Panel*/
@@ -64,10 +88,9 @@ html{
 }
 
 .info-panel img{
-	width: 80px;
-	height: 80px;
+	widows: 40px;
+	height: 40px;
 	margin-right: 20px;
-	margin-bottom: 20px;
 }
 
 .info-panel h4{
@@ -77,6 +100,35 @@ html{
 	margin-top: 5px;
 }
 .info-panel p{
+	font-size: 14px;
+	color: #ACACAC;
+	margin-top: -5px;
+}
+
+/*form booking*/
+.form-booking{
+	background-color:rgba(255,255,255,0.5);
+	box-shadow: 0 3px 20px rgba(0,0,0,0.5);
+	border-radius: 10px;
+	margin-top: -70px;
+	padding: 20px;
+
+}
+
+.form-booking img{
+	width: 80px;
+	height: 80px;
+	margin-right: 20px;
+	margin-bottom: 20px;
+}
+
+.form-booking h4{
+	font-size: 16px;
+	text-transform: uppercase;
+	font-weight: bold;
+	margin-top: 5px;
+}
+.form-booking p{
 	font-size: 14px;
 	color: #ACACAC;
 	margin-top: -5px;
@@ -92,11 +144,11 @@ html{
 }
 
 .info-kami img{
-	width: 80px;
-	height: 80px;
+	width: 70px;
+	height: 70px;
 	margin-bottom: 10px;
 	margin-top: 50px;
-	margin-left: 90px;
+	margin-left: 20px;
 
 }
 
@@ -104,15 +156,15 @@ html{
 	font-size: 16px;
 	text-transform: uppercase;
 	font-weight: bold;
-	margin-top: 50px;
-	margin-left: 100px;
+	margin-top: -90px;
+	margin-left: 50px;
 	padding-left: 80px;
 }
 .info-kami p{
 	font-size: 14px;
 	color: #ACACAC;
 	margin-top: 3px;
-	margin-left: 100px;
+	margin-left: 50px;
 	padding-left: 80px;
 }
 
@@ -120,14 +172,14 @@ html{
 .judul-kami{
 	background-image: linear-gradient(to top, rgba(0,128,0,1), rgba(0,128,0,1));
 	box-shadow: 0 3px 10px rgba(0,0,0,0.5);
-	border-radius: 20px;
-	padding: 20px;
-	margin-bottom: -50px;
+	border-radius: 50px;
+	padding: 10px;
+	margin-bottom: -30px;
 	z-index: 1;
 
 }
-.judul-kami h3{
-	font-size: 15px;
+.judul-kami h5{
+	font-size: 20px;
 }
 .judulharuskami{
 	margin: auto;
@@ -139,7 +191,7 @@ html{
 }
 
 .haruskami{
-	margin-top: 50px;
+	margin-top: 70px;
 }
 
 /*testimonial*/
@@ -212,6 +264,12 @@ html{
 	margin-top: 3px;
 }
 
+.garis_vertikal{
+	border-left: 2px black solid;
+	height: 100%;
+	width: 1px;
+}
+
 
 /*Footer*/
 
@@ -221,28 +279,30 @@ html{
 	
 }
 .bg-footer{
-	background-color: rgba(63, 255, 0,0.5);
+	background-color: rgba(0, 0, 0, 0.5);
 }
 
 .footer p{
 	text-align: center;
 	margin-top: 50px;
 	margin-bottom: 0px;
+	color: white;
 }
 
-.footer h3{
+.footer h5{
 	text-align: center;
 	text-transform: uppercase;
+	padding-top: 10px;
+	padding-bottom: 10px;
+	font-size: 15px;
 }
 
 .follow{
-	background-color: green;
-	box-shadow: 0 3px 20px rgba(0,0,0,0.5);
-	border-radius: 20px;
 	padding: 10px;
 	height: 50px;
 	margin-left: 50px;
 	margin-right: 50px;
+	margin-bottom: -40px;
 
 }
 
@@ -256,10 +316,13 @@ html{
 
 /*Utylity*/
 .tombol{
-	text-transform: uppercase;
 	border-radius: 40px;
-}
 
+}
+.tombol-dua{
+	text-transform: uppercase;
+	border-radius: 20px;
+}
 .roundform{
 	border-radius: 10px;
 	width: 100%;
@@ -285,6 +348,53 @@ html{
 	margin-bottom: 20px;
 }
 
+.table1 {
+    font-family: sans-serif;
+    color: #444;
+    border-collapse: collapse;
+    width: 50%;
+    border: 1px solid #f2f5f7;
+    position:relative;
+}
+ 
+.table1 tr th{
+    background: #35A9DB;
+    color: #fff;
+    font-weight: normal;
+}
+ 
+.table1, th, td {
+    padding: 8px 20px;
+    text-align: center;
+}
+ 
+.table1 tr:hover {
+    background-color: #f5f5f5;
+}
+ 
+.table1 tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.carousel-inner img {
+	width: 100px;
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.card img{
+	width: 20%;
+	height: 20%;
+}
+.card p{
+	font-size: small;
+}
+
+
+
+
+
+
 
 /*DESKTOP VERSION*/
 @media (min-width: 992px){
@@ -300,42 +410,59 @@ html{
 	.nav-link:hover::after{
 		content: "";
 		display: block;
-		border-bottom: 3px solid #0B63DC;
+		border-bottom: 3px solid #ffffff;
 		width: 50%;
 		margin: auto;
 		padding-bottom: 3px;
 		margin-bottom: -8px;
 	}
+	.nav-select{
+		color: white !important;
+		margin: auto;
+		margin-right: 20px;
+		margin-top: 50px;
+		border-radius: 20px;
+		text-transform: uppercase;
+	}
 
 	.jumbotron{
-		margin-top: -125px;
+		margin-top: -100px;
 		height: 540px;
 	}
 
 	.jumbotron .display-4{
-		font-size: 62px;
-		text-shadow: 1px 1px 1px rgba(0, 255, 0, 0.7);
+	color: white;
+	padding-top: 150px;
+	text-align: center;
+	font-weight: 100;
+	text-shadow: 1px 1px 1px rgba(0, 255, 0, 0.3);
+	font-size: 50px;
 	}
 
-	.judul-kami h3{
-		font-size: 32px;
+	.jumbotron .display-4 span{
+		font-weight: 500;
+	}
+
+	.judul-kami h5{
+		font-size: 25px;
 	}
 
 	.info-kami{
 	background-color: white;
 	box-shadow: 0 3px 20px rgba(0,0,0,0.5);
 	border-radius: 20px;
-	padding: 20px;
+	padding: 10px;
 
 	}
 
 	.info-kami img{
-		width: 100px;
-		height: 100px;
-		margin-right: 100px;
-		margin-left: 100px;
+		width: 80px;
+		height: 80px;
+		margin-left: 50px;
+		margin-right: 50px;
 		margin-bottom: 20px;
 		margin-top: 50px;
+		align-content: auto;
 
 	}
 
@@ -344,19 +471,46 @@ html{
 		text-transform: uppercase;
 		font-weight: bold;
 		margin-right: 50px;
-		margin-left: 20px;
-		margin-top: 5px;
+		margin-left: 1px;
+		margin-top: 10px;
 	}
 	.info-kami p{
 		margin-right: 50px;
-		margin-left: 20px;
+		margin-left: 1px;
 		font-size: 14px;
 		color: #ACACAC;
-		margin-top: -5px;
+		margin-top: 1px;
 	}
 
 	.testimonial h5{
 		width: 200;
 		font-size: 32px;
 	}
+	.tombol{
+	text-transform: uppercase;
+	border-radius: 40px;
+	}
+
+	/*Info Panel*/
+	.info-panel{
+		background-color: white;
+		box-shadow: 0 3px 20px rgba(0,0,0,0.5);
+		border-radius: 10px;
+		margin-top: -150px;
+		padding: 20px;
+
+	}
+
+	.info-panel img{
+		width: 60px;
+		height: 60px;
+	}
+
+	.img-size{
+		width: 20px;
+		height: 20px;
+	}
+
+	
+
 }

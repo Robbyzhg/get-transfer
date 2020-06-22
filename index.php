@@ -59,12 +59,32 @@ if ( isset($_GET['setlang']) ) {
               </button>
             </div>
             <div class="modal-body">
-              <a class="btn btn-outline-success btn-lg text-center mb-2" href="halamanpaket.php">
-                Our Recommendation
-              </a>
-              <a class="btn btn-outline-success btn-lg text-center" href="halamanpaket.php">
-                Fullday/Halfday Tour
-              </a>
+              <div class="row justify-content-center">
+                <div class="col-md-6">
+                  <div class="card">
+                    <div class="card-header text-center"><b>Our Recommendation</b></div>
+                    <div class="card-body">
+                    <img src="assets/img/quality.png" alt="Taxi" class="float-left mr-3">
+                    <p>we have many tour recommendations for you</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="halamanpaket.php" class="btn btn-dark btn-sm">Choose</a>
+                    </div>
+                  </div>
+                </div>
+                <div class="col-md-6">
+                  <div class="card">
+                    <div class="card-header text-center"><b>Fullday/Halfday Tour</b></div>
+                    <div class="card-body">
+                    <img src="assets/img/request.png" alt="Taxi" class="float-left mr-3">
+                    <p>we give you the freedom to choose your own tour according to your wishes</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="halamanpaket.php" class="btn btn-dark btn-sm">Choose</a>
+                    </div>
+                  </div>
+                </div>
+              </div>
             </div>
             <div class="modal-footer">
               <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -77,7 +97,7 @@ if ( isset($_GET['setlang']) ) {
       <div class="row">
         <div id="section1" class="judulharuskami">
           <div class="col-lg judul-kami">
-            <h3 class="judul-kamih3">Why Must Choose Us</h3>
+            <h5>Why Must Choose Us</h5>
           </div>
         </div>
       </div>
@@ -174,8 +194,8 @@ if ( isset($_GET['setlang']) ) {
     <!-- Whatsapp API  -->
     <div style="position:fixed;right:20px;bottom:20px;">
       <a href="https://api.whatsapp.com/send?phone=+62811122233">
-      <button class="btn btn-outline-success btn-lg">
-      <img src="https://web.whatsapp.com/img/favicon/1x/favicon.png"> Customer Service</button></a>
+      <button class="btn btn-success btn-lg">
+      <img src="https://web.whatsapp.com/img/favicon/2x/favicon.png"> Help</button></a>
     </div>
     
 
